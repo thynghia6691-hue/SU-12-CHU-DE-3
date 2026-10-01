@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 9: Cuộc Đấu Tranh Bảo Vệ Tổ Quốc (1975 - Nay) | Lịch Sử 12</title>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- QRCodeJS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#da251c',
+                            darkred: '#881337',
+                            gold: '#ffcd00',
+                            navy: '#0f172a',
+                            ocean: '#0284c7',
+                            deepocean: '#0369a1',
+                            goldHover: '#e6b800'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            user-select: none;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(136, 19, 55, 0.95) 0%, rgba(218, 37, 28, 0.88) 100%), 
+                        url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(255, 205, 0, 0.4);
+        }
+
+        .red-glow {
+            box-shadow: 0 0 20px rgba(218, 37, 28, 0.3);
+        }
+
+        /* Perspective for Cards */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .draggable-item {
+            cursor: grab;
+            transition: all 0.2s ease;
+        }
+        .draggable-item:active {
+            cursor: grabbing;
+            transform: scale(0.98);
+        }
+
+        .dropzone-active {
+            border-color: #da251c !important;
+            background-color: #fef2f2 !important;
+        }
+
+        .pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.9; transform: scale(1.02); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-brand-red selection:text-white">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Badge & Title -->
+            <div class="flex items-center gap-3">
+                <button onclick="showStation('cover')" class="w-12 h-12 rounded-xl bg-brand-red flex items-center justify-center text-brand-gold font-bold text-2xl shadow-md border-2 border-brand-gold hover:scale-105 transition">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </button>
+                <div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
+                        <i class="fa-solid fa-book-bookmark text-brand-red"></i> LỊCH SỬ 12 • KẾT NỐI TRI THỨC VỚI CUỘC SỐNG
+                    </span>
+                    <h1 class="text-base sm:text-lg font-extrabold text-slate-900 tracking-tight leading-tight line-clamp-1">
+                        BÀI 9: HÀNH TRÌNH BẢO VỆ TỔ QUỐC (TỪ SAU 4/1975 ĐẾN NAY)
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Action Controls -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <!-- Sound Toggle -->
+                <button id="soundBtn" onclick="toggleSound()" title="Âm thanh hiệu ứng" class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition border border-slate-300 flex items-center gap-1.5">
+                    <i id="soundIcon" class="fa-solid fa-volume-high text-brand-red"></i>
+                    <span class="hidden md:inline text-xs">Âm thanh</span>
+                </button>
+
+                <!-- Map Drawer Menu -->
+                <button onclick="toggleMapModal()" class="flex items-center gap-2 bg-brand-red hover:bg-brand-darkred text-white px-3.5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-md">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Bản đồ Trạm</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="flex-grow">
+        
+        <!-- SCREEN: COVER (TRANG BÌA) -->
+        <section id="station-cover" class="station-screen hero-banner text-white min-h-[calc(100vh-5rem)] flex items-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-8 items-center z-10">
+                <div class="lg:col-span-8 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-brand-gold/50 text-brand-gold font-bold text-xs sm:text-sm shadow-md">
+                        <i class="fa-solid fa-star text-amber-400"></i> BỘ KẾT NỐI TRI THỨC VỚI CUỘC SỐNG • BÀI 9
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-none text-white drop-shadow-md">
+                        HÀNH TRÌNH BẢO VỆ TỔ QUỐC
+                    </h1>
+                    
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-gold tracking-wide">
+                        CUỘC ĐẤU TRANH BẢO VỆ TỔ QUỐC TỪ SAU THÁNG 4 - 1975 ĐẾN NAY
+                    </h2>
+
+                    <p class="text-slate-200 text-base sm:text-lg max-w-3xl leading-relaxed font-medium">
+                        Một số bài học lịch sử của các cuộc kháng chiến bảo vệ Tổ quốc từ năm 1945 đến nay. Khám phá bản đồ hành trình lịch sử tương tác sinh động chuẩn chương trình GDPT 2018.
+                    </p>
+
+                    <div class="pt-4 flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <button onclick="showStation('warmup')" class="gold-gradient gold-glow text-slate-950 px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 transition transform shadow-xl flex items-center gap-3 border-2 border-amber-300">
+                            <i class="fa-solid fa-circle-play text-2xl text-brand-red"></i>
+                            <span>▶ BẮT ĐẦU HÀNH TRÌNH</span>
+                        </button>
+                        <button onclick="showStation('mindmap')" class="bg-black/40 hover:bg-black/60 text-white px-6 py-4 rounded-2xl font-bold text-base transition border border-white/30 backdrop-blur-md flex items-center gap-2">
+                            <i class="fa-solid fa-sitemap text-brand-gold"></i>
+                            <span>Xem Sơ đồ Tư duy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Interactive Hero Badge -->
+                <div class="lg:col-span-4 flex justify-center">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 rounded-3xl bg-gradient-to-b from-brand-red to-brand-navy p-1 shadow-2xl border-4 border-brand-gold flex flex-col items-center justify-center text-center pulse-slow">
+                        <div class="w-24 h-24 rounded-full bg-brand-gold text-brand-darkred flex items-center justify-center text-5xl font-black mb-3 shadow-inner">
+                            <i class="fa-solid fa-flag"></i>
+                        </div>
+                        <h3 class="text-xl font-black text-white px-4">9 TRẠM HỌC TẬP TƯƠNG TÁC</h3>
+                        <p class="text-xs text-amber-200 mt-2 px-6">Bắt đầu từ Khởi động, Khám phá diễn biến đến Thử thách & Vận dụng bài học</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN: WARMUP & OBJECTIVES -->
+        <section id="station-warmup" class="station-screen hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+            <!-- Header Bar -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 border-l-8 border-l-brand-red">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-red-100 text-brand-red font-bold text-xs">HOẠT ĐỘNG KHỞI ĐỘNG</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">SAU NGÀY 30-4-1975</h2>
+                    <p class="text-sm text-slate-600 mt-1">Sự kiện đất nước thống nhất mở ra kỷ nguyên mới với nhiệm vụ chiến lược hàng đầu.</p>
+                </div>
+                <button onclick="showStation('st1')" class="px-5 py-3 rounded-xl bg-slate-900 text-white font-bold text-sm hover:bg-brand-red transition flex items-center gap-2 whitespace-nowrap shadow">
+                    <span>Bỏ qua Khởi động</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Warmup Question Interactive Card -->
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-6">
+                <div class="flex items-center gap-4 text-brand-red">
+                    <i class="fa-solid fa-circle-question text-3xl"></i>
+                    <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">
+                        Theo em, sau khi đất nước hoàn toàn thống nhất (30-4-1975), nhiệm vụ bảo vệ Tổ quốc có còn tiếp tục đặt ra không?
+                    </h3>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-4" id="warmupOptions">
+                    <button onclick="answerWarmup('A')" class="p-5 rounded-2xl border-2 border-slate-200 hover:border-brand-red bg-slate-50 text-left font-bold text-slate-800 transition hover:shadow-md flex flex-col justify-between h-36">
+                        <span class="text-xs text-brand-red uppercase font-black">Lựa chọn A</span>
+                        <span class="text-sm">Không, vì đất nước đã hoàn toàn hòa bình, thống nhất.</span>
+                        <i class="fa-solid fa-xmark text-slate-300 self-end"></i>
+                    </button>
+                    <button onclick="answerWarmup('B')" class="p-5 rounded-2xl border-2 border-slate-200 hover:border-brand-red bg-slate-50 text-left font-bold text-slate-800 transition hover:shadow-md flex flex-col justify-between h-36">
+                        <span class="text-xs text-brand-red uppercase font-black">Lựa chọn B</span>
+                        <span class="text-sm">Có, vì bảo vệ Tổ quốc luôn là nhiệm vụ chiến lược thường xuyên.</span>
+                        <i class="fa-solid fa-check text-slate-300 self-end"></i>
+                    </button>
+                    <button onclick="answerWarmup('C')" class="p-5 rounded-2xl border-2 border-slate-200 hover:border-brand-red bg-slate-50 text-left font-bold text-slate-800 transition hover:shadow-md flex flex-col justify-between h-36">
+                        <span class="text-xs text-brand-red uppercase font-black">Lựa chọn C</span>
+                        <span class="text-sm">Chỉ cần tập trung phát triển kinh tế xã hội.</span>
+                        <i class="fa-solid fa-xmark text-slate-300 self-end"></i>
+                    </button>
+                </div>
+
+                <div id="warmupFeedback" class="hidden p-5 rounded-2xl bg-amber-50 border-2 border-amber-300 text-amber-900 text-sm leading-relaxed space-y-3">
+                    <div class="font-bold text-base flex items-center gap-2">
+                        <i class="fa-solid fa-bullhorn text-brand-red"></i> KẾT QUẢ KHỞI ĐỘNG:
+                    </div>
+                    <p id="warmupFeedbackText"></p>
+                    <button onclick="showStation('st1')" class="px-6 py-2.5 bg-brand-red hover:bg-brand-darkred text-white font-bold rounded-xl transition text-xs shadow inline-flex items-center gap-2">
+                        <span>▶ KHÁM PHÁ BÀI HỌC</span> <i class="fa-solid fa-compass"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Learning Objectives Cards Grid -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-black text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-bullseye text-brand-red"></i> MỤC TIÊU BÀI HỌC SGK
+                </h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-red transition">
+                        <div class="w-10 h-10 rounded-xl bg-red-100 text-brand-red font-black flex items-center justify-center mb-3">01</div>
+                        <p class="text-xs font-semibold text-slate-700 leading-relaxed">Sưu tầm & sử dụng tư liệu lịch sử để tìm hiểu cuộc đấu tranh bảo vệ Tổ quốc từ sau 4-1975 đến nay.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-red transition">
+                        <div class="w-10 h-10 rounded-xl bg-red-100 text-brand-red font-black flex items-center justify-center mb-3">02</div>
+                        <p class="text-xs font-semibold text-slate-700 leading-relaxed">Trình bày nét chính bối cảnh lịch sử & diễn biến các cuộc đấu tranh bảo vệ biên giới Tây Nam & phía Bắc.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-red transition">
+                        <div class="w-10 h-10 rounded-xl bg-red-100 text-brand-red font-black flex items-center justify-center mb-3">03</div>
+                        <p class="text-xs font-semibold text-slate-700 leading-relaxed">Trình bày được cuộc đấu tranh bảo vệ chủ quyền quốc gia trên Biển Đông từ năm 1975 đến nay.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-red transition">
+                        <div class="w-10 h-10 rounded-xl bg-red-100 text-brand-red font-black flex items-center justify-center mb-3">04</div>
+                        <p class="text-xs font-semibold text-slate-700 leading-relaxed">Nêu được ý nghĩa lịch sử & các bài học lịch sử của các cuộc kháng chiến từ năm 1945 đến nay.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-red transition">
+                        <div class="w-10 h-10 rounded-xl bg-red-100 text-brand-red font-black flex items-center justify-center mb-3">05</div>
+                        <p class="text-xs font-semibold text-slate-700 leading-relaxed">Vận dụng bài học lịch sử vào thực tiễn công cuộc xây dựng & bảo vệ Tổ quốc hiện nay.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN: STATION 1 - BỐI CẢNH LỊCH SỬ -->
+        <section id="station-st1" class="station-screen hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <!-- Station Title Banner -->
+            <div class="bg-gradient-to-r from-brand-navy to-slate-800 text-white p-6 sm:p-8 rounded-3xl shadow-lg border-b-4 border-brand-gold flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-brand-gold text-slate-950 font-black text-xs">🚩 TRẠM 1</span>
+                    <h2 class="text-2xl sm:text-3xl font-black mt-2">1. BỐI CẢNH LỊCH SỬ CỦA CUỘC ĐẤU TRANH BẢO VỆ TỔ QUỐC</h2>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Đất nước sau thống nhất: Thời kỳ mới vừa xây dựng vừa sẵn sàng bảo vệ Tổ quốc.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showStation('warmup')" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition"><i class="fa-solid fa-chevron-left mr-1"></i> Trở lại</button>
+                    <button onclick="showStation('st2')" class="px-4 py-2 rounded-xl bg-brand-red hover:bg-brand-darkred text-white font-bold text-xs transition shadow">Trạm 2 <i class="fa-solid fa-chevron-right ml-1"></i></button>
+                </div>
+            </div>
+
+            <!-- Content SGK Box -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-book-open text-brand-red"></i> Kiến thức trọng tâm SGK:
+                </h3>
+                <p class="text-sm text-slate-700 leading-relaxed">
+                    Sau thắng lợi vĩ đại của cuộc kháng chiến chống Mỹ, cứu nước (4/1975), nhân dân Việt Nam bước vào thời kỳ hoàn thành thống nhất đất nước và tập trung xây dựng Chủ nghĩa Xã hội. Tuy nhiên, tình hình khu vực và thế giới xuất hiện nhiều biến động phức tạp, đe dọa trực tiếp đến an ninh và chủ quyền lãnh thổ của Việt Nam.
+                </p>
+            </div>
+
+            <!-- Interactive Activity: Drag & Drop / Classification -->
+            <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl border border-slate-800">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-800 pb-4">
+                    <div>
+                        <h3 class="text-lg font-black text-brand-gold flex items-center gap-2">
+                            <i class="fa-solid fa-hand-pointer"></i> HOẠT ĐỘNG TƯƠNG TÁC: "THUẬN LỢI HAY THÁCH THỨC?"
+                        </h3>
+                        <p class="text-xs text-slate-400">Kéo hoặc bấm vào thẻ thông tin để phân loại chính xác tình hình đất nước sau tháng 4-1975.</p>
+                    </div>
+                    <button onclick="resetSt1Activity()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-300">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Làm lại
+                    </button>
+                </div>
+
+                <!-- Unassigned Draggable Cards -->
+                <div id="st1CardBank" class="flex flex-wrap gap-3 p-4 bg-slate-800/60 rounded-2xl min-h-[80px] items-center border border-slate-700">
+                    <div id="card-1" onclick="assignSt1Card('card-1', 'thuanloi')" class="draggable-item bg-emerald-900/80 hover:bg-emerald-800 text-emerald-100 border border-emerald-500/50 px-3.5 py-2 rounded-xl text-xs font-semibold shadow">
+                        ➕ Đất nước hoàn toàn hòa bình, thống nhất
+                    </div>
+                    <div id="card-2" onclick="assignSt1Card('card-2', 'thachthuc')" class="draggable-item bg-rose-900/80 hover:bg-rose-800 text-rose-100 border border-rose-500/50 px-3.5 py-2 rounded-xl text-xs font-semibold shadow">
+                        ⚠️ Tập đoàn Pôn Pốt liên tục khiêu khích biên giới
+                    </div>
+                    <div id="card-3" onclick="assignSt1Card('card-3', 'thuanloi')" class="draggable-item bg-emerald-900/80 hover:bg-emerald-800 text-emerald-100 border border-emerald-500/50 px-3.5 py-2 rounded-xl text-xs font-semibold shadow">
+                        ➕ Nhân dân cả nước tập trung xây dựng đất nước
+                    </div>
+                    <div id="card-4" onclick="assignSt1Card('card-4', 'thachthuc')" class="draggable-item bg-rose-900/80 hover:bg-rose-800 text-rose-100 border border-rose-500/50 px-3.5 py-2 rounded-xl text-xs font-semibold shadow">
+                        ⚠️ Quan hệ ngoại giao quốc tế & khu vực diễn biến phức tạp
+                    </div>
+                    <div id="card-5" onclick="assignSt1Card('card-5', 'thuanloi')" class="draggable-item bg-emerald-900/80 hover:bg-emerald-800 text-emerald-100 border border-emerald-500/50 px-3.5 py-2 rounded-xl text-xs font-semibold shadow">
+                        ➕ Khối đại đoàn kết toàn dân tộc được củng cố
+                    </div>
+                </div>
+
+                <!-- 2 Classification Drop Zones -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Zone 1: Thuận lợi -->
+                    <div id="zone-thuanloi" class="bg-slate-800/80 border-2 border-dashed border-emerald-500/50 p-5 rounded-2xl min-h-[160px] space-y-3">
+                        <div class="text-emerald-400 font-bold text-sm flex items-center gap-2 border-b border-emerald-900 pb-2">
+                            <i class="fa-solid fa-circle-check"></i> 🟢 THUẬN LỢI
+                        </div>
+                        <div id="container-thuanloi" class="space-y-2"></div>
+                    </div>
+
+                    <!-- Zone 2: Thách thức -->
+                    <div id="zone-thachthuc" class="bg-slate-800/80 border-2 border-dashed border-rose-500/50 p-5 rounded-2xl min-h-[160px] space-y-3">
+                        <div class="text-rose-400 font-bold text-sm flex items-center gap-2 border-b border-rose-900 pb-2">
+                            <i class="fa-solid fa-triangle-exclamation"></i> 🔴 THÁCH THỨC
+                        </div>
+                        <div id="container-thachthuc" class="space-y-2"></div>
+                    </div>
+                </div>
+
+                <div id="st1ResultFeedback" class="hidden p-4 rounded-xl bg-amber-500/20 border border-amber-500 text-amber-200 text-xs leading-relaxed">
+                    <span class="font-bold text-amber-400"><i class="fa-solid fa-lightbulb"></i> GIẢI THÍCH SGK:</span>
+                    Mặc dù đất nước có thuận lợi vô cùng to lớn là hoàn toàn thống nhất và hòa bình, tuy nhiên những thách thức từ sự chống phá của tập đoàn Pôn Pốt ở biên giới Tây Nam và sự phức tạp của tình hình quốc tế đã nhanh chóng đặt đất nước vào yêu cầu chiến lược: Vừa phát triển kinh tế vừa kiên quyết bảo vệ độc lập, chủ quyền.
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN: STATION 2 - BIÊN GIỚI TÂY NAM -->
+        <section id="station-st2" class="station-screen hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-red-950 to-brand-red text-white p-6 sm:p-8 rounded-3xl shadow-lg border-b-4 border-brand-gold flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-brand-gold text-slate-950 font-black text-xs">🛡 TRẠM 2</span>
+                    <h2 class="text-2xl sm:text-3xl font-black mt-2">2. CUỘC ĐẤU TRANH BẢO VỆ TỔ QUỐC Ở VÙNG BIÊN GIỚI TÂY NAM (1975 - 1979)</h2>
+                    <p class="text-xs sm:text-sm text-slate-200 mt-1">Từ phòng ngự đánh trả quân xâm lược Pôn Pốt đến giúp đỡ cách mạng Campuchia.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showStation('st1')" class="px-4 py-2 rounded-xl bg-black/30 hover:bg-black/50 text-white font-bold text-xs transition"><i class="fa-solid fa-chevron-left mr-1"></i> Trạm 1</button>
+                    <button onclick="showStation('st3')" class="px-4 py-2 rounded-xl bg-brand-gold text-slate-950 hover:bg-amber-400 font-bold text-xs transition shadow">Trạm 3 <i class="fa-solid fa-chevron-right ml-1"></i></button>
+                </div>
+            </div>
+
+            <!-- Two Stages Timeline Grid -->
+            <div class="grid lg:grid-cols-2 gap-6">
+                <!-- Stage 1 -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+                        <span class="w-8 h-8 rounded-xl bg-red-100 text-brand-red font-black flex items-center justify-center text-xs">a</span>
+                        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg">Giai đoạn 1: 1975 - 1977</h3>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                        <li>Sau khi lên nắm quyền ở Campuchia, chính quyền Pôn Pốt đẩy mạnh khiêu khích, xâm phạm chủ quyền lãnh thổ Việt Nam.</li>
+                        <li><strong>Ngày 30-4-1977:</strong> Quân Pôn Pốt bất ngờ mở cuộc tiến công trên toàn tuyến biên giới Tây Nam tỉnh An Giang.</li>
+                        <li>Quân dân Việt Nam kiên quyết tổ chức chiến đấu bảo vệ biên giới, từng bước đẩy lùi các cuộc tiến công của địch.</li>
+                    </ul>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-center gap-2 border-b border-slate-100 pb-3">
+                        <span class="w-8 h-8 rounded-xl bg-red-100 text-brand-red font-black flex items-center justify-center text-xs">b</span>
+                        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg">Giai đoạn 2: 1977 - 1979 ("Từ Phòng Ngự Đến Phản Công")</h3>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
+                        <li>Thực hiện quyền tự vệ chính đáng, quân dân Việt Nam chuyển sang phản công, quét sạch quân Pôn Pốt khỏi lãnh thổ.</li>
+                        <li>Theo yêu cầu của Mặt trận Đoàn kết Dân tộc Cứu quốc Campuchia, Quân voluntar Việt Nam phối hợp với lực lượng cách mạng Campuchia tiến công.</li>
+                        <li><strong>7-1-1979:</strong> Giải phóng Thủ đô Phnôm Pênh, cứu nhân dân Campuchia thoát khỏi thảm họa diệt chủng.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mini Game: Giải mã Tây Nam -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-black text-slate-900 text-lg">MINI GAME: "GIẢI MÃ TÂY NAM"</h3>
+                            <p class="text-xs text-slate-500">Trả lời nhanh 3 câu hỏi kiểm tra kiến thức về cuộc đấu tranh Tây Nam</p>
+                        </div>
+                    </div>
+                    <span id="st2Score" class="text-xs font-bold px-3 py-1 bg-red-100 text-brand-red rounded-full">Đã đúng: 0/3</span>
+                </div>
+
+                <div id="st2QuizContainer" class="space-y-4">
+                    <!-- Dynamic rendering via JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN: STATION 3 - BIÊN GIỚI PHÍA BẮC -->
+        <section id="station-st3" class="station-screen hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-slate-900 to-brand-navy text-white p-6 sm:p-8 rounded-3xl shadow-lg border-b-4 border-brand-gold flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-brand-gold text-slate-950 font-black text-xs">🛡 TRẠM 3</span>
+                    <h2 class="text-2xl sm:text-3xl font-black mt-2">3. CUỘC ĐẤU TRANH BẢO VỆ TỔ QUỐC Ở VÙNG BIÊN GIỚI PHÍA BẮC (1979)</h2>
+                    <p class="text-xs sm:text-sm text-slate-300 mt-1">Cuộc chiến đấu kiên cường bảo vệ từng tấc đất thiêng liêng ở biên giới phía Bắc.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showStation('st2')" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition"><i class="fa-solid fa-chevron-left mr-1"></i> Trạm 2</button>
+                    <button onclick="showStation('st4')" class="px-4 py-2 rounded-xl bg-brand-ocean text-white font-bold text-xs transition shadow">Trạm 4 <i class="fa-solid fa-chevron-right ml-1"></i></button>
+                </div>
+            </div>
+
+            <!-- Timeline Sequence 1979 -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <h3 class="text-lg font-black text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-timeline text-brand-red"></i> DIỄN BIẾN CHÍNH BIÊN GIỚI PHÍA BẮC (1979)
+                </h3>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-2xl border-l-4 border-l-amber-500 border border-slate-200">
+                        <span class="text-xs font-extrabold text-amber-700">THÁNG 1 - 1979</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-1">Căng thẳng gia tăng</h4>
+                        <p class="text-xs text-slate-600 mt-2">Tình hình biên giới phía Bắc diễn biến hết sức căng thẳng do các hành động xâm phạm của phía bên kia.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-2xl border-l-4 border-l-brand-red border border-slate-200">
+                        <span class="text-xs font-extrabold text-brand-red">SÁNG 17 - 2 - 1979</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-1">Tấn công đồng loạt</h4>
+                        <p class="text-xs text-slate-600 mt-2">Quân Trung Quốc bất ngờ mở cuộc tiến công đồng loạt trên toàn tuyến biên giới phía Bắc từ Móng Cái đến Lai Châu.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-2xl border-l-4 border-l-brand-red border border-slate-200">
+                        <span class="text-xs font-extrabold text-brand-red">5 - 3 - 1979</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-1">Lệnh Tổng động viên</h4>
+                        <p class="text-xs text-slate-600 mt-2">Ủy ban Thường vụ Quốc hội ra lệnh Tổng động viên toàn quốc. Quân dân ta kiên cường đánh trả ngoan cường.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-2xl border-l-4 border-l-emerald-600 border border-slate-200">
+                        <span class="text-xs font-extrabold text-emerald-700">18 - 3 - 1979</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-1">Địch rút khỏi lãnh thổ</h4>
+                        <p class="text-xs text-slate-600 mt-2">Trước sự đánh trả quyết liệt và truyền thống hòa hiếu của ta, quân TQ tuyên bố rút khỏi Việt Nam. Ta hoàn thành việc rút quân ngày 18/3.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Map & Provincial Badges -->
+            <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl border border-slate-800">
+                <div>
+                    <h3 class="text-lg font-black text-brand-gold flex items-center gap-2">
+                        <i class="fa-solid fa-map-marked-alt"></i> BẢN ĐỒ CÁC TỈNH BIÊN GIỚI PHÍA BẮC (NHẤP ĐỂ XEM)
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Chạm/nhấp vào các địa danh chiến trường chính để xem thông tin tư liệu SGK</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                    <button onclick="showProvinceInfo('hagiang')" class="p-4 rounded-2xl bg-slate-800 hover:bg-brand-red transition text-center border border-slate-700 group">
+                        <i class="fa-solid fa-mountain text-amber-400 group-hover:text-white text-xl mb-2"></i>
+                        <div class="font-bold text-xs">HÀ GIANG</div>
+                        <span class="text-[10px] text-slate-400 group-hover:text-amber-200">(Vị Xuyên)</span>
+                    </button>
+                    <button onclick="showProvinceInfo('caobang')" class="p-4 rounded-2xl bg-slate-800 hover:bg-brand-red transition text-center border border-slate-700 group">
+                        <i class="fa-solid fa-shield text-amber-400 group-hover:text-white text-xl mb-2"></i>
+                        <div class="font-bold text-xs">CAO BẰNG</div>
+                        <span class="text-[10px] text-slate-400 group-hover:text-amber-200">(Biên giới)</span>
+                    </button>
+                    <button onclick="showProvinceInfo('langson')" class="p-4 rounded-2xl bg-slate-800 hover:bg-brand-red transition text-center border border-slate-700 group">
+                        <i class="fa-solid fa-monument text-amber-400 group-hover:text-white text-xl mb-2"></i>
+                        <div class="font-bold text-xs">LẠNG SƠN</div>
+                        <span class="text-[10px] text-slate-400 group-hover:text-amber-200">(Đồng Đăng)</span>
+                    </button>
+                    <button onclick="showProvinceInfo('laocai')" class="p-4 rounded-2xl bg-slate-800 hover:bg-brand-red transition text-center border border-slate-700 group">
+                        <i class="fa-solid fa-tree text-amber-400 group-hover:text-white text-xl mb-2"></i>
+                        <div class="font-bold text-xs">LÀO CAI</div>
+                        <span class="text-[10px] text-slate-400 group-hover:text-amber-200">(Mường Khương)</span>
+                    </button>
+                    <button onclick="showProvinceInfo('quangninh')" class="p-4 rounded-2xl bg-slate-800 hover:bg-brand-red transition text-center border border-slate-700 group col-span-2 sm:col-span-1">
+                        <i class="fa-solid fa-water text-amber-400 group-hover:text-white text-xl mb-2"></i>
+                        <div class="font-bold text-xs">QUẢNG NINH</div>
+                        <span class="text-[10px] text-slate-400 group-hover:text-amber-200">(Móng Cái)</span>
+                    </button>
+                </div>
+
+                <div id="provinceInfoCard" class="bg-slate-800/90 border border-slate-700 p-5 rounded-2xl text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    <span class="font-bold text-brand-gold"><i class="fa-solid fa-info-circle mr-1"></i> Hướng dẫn:</span> Bấm vào tên tỉnh ở trên để xem chi tiết địa bàn chiến đấu bảo vệ biên giới theo SGK.
+                </div>
+            </div>
+
+            <!-- Góc Em Có Biết -->
+            <div class="bg-amber-50 border-2 border-amber-300 p-6 rounded-3xl space-y-2">
+                <div class="flex items-center gap-2 text-amber-900 font-extrabold text-sm">
+                    <i class="fa-solid fa-lightbulb text-amber-600 text-lg"></i> GÓC "EM CÓ BIẾT?" (TƯ LIỆU SGK)
+                </div>
+                <p class="text-xs sm:text-sm text-amber-950 leading-relaxed">
+                    Sau sự kiện tháng 3-1979, chiến sự tiếp tục kéo dài dai dẳng ở một số điểm cao biên giới, đặc biệt là tại mặt trận Vị Xuyên (Hà Hà Giang) trong suốt những năm 1984 - 1989 trước khi quan hệ hai nước chính thức được bình thường hóa vào năm 1991.
+                </p>
+            </div>
+        </section>
+
+        <!-- SCREEN: STATION 4 - BẢO VỆ CHỦ QUYỀN BIỂN ĐÔNG -->
+        <section id="station-st4" class="station-screen hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-brand-deepocean to-cyan-800 text-white p-6 sm:p-8 rounded-3xl shadow-lg border-b-4 border-brand-gold flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-brand-gold text-slate-950 font-black text-xs">🌊 TRẠM 4</span>
+                    <h2 class="text-2xl sm:text-3xl font-black mt-2">4. CUỘC ĐẤU TRANH BẢO VỆ CHỦ QUYỀN QUỐC GIA TRÊN BIỂN ĐÔNG</h2>
+                    <p class="text-xs sm:text-sm text-cyan-100 mt-1">Đấu tranh pháp lý, ngoại giao & thực địa bảo vệ vững chắc hai quần đảo Hoàng Sa và Trường Sa.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showStation('st3')" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition"><i class="fa-solid fa-chevron-left mr-1"></i> Trạm 3</button>
+                    <button onclick="showStation('st5')" class="px-4 py-2 rounded-xl bg-brand-red text-white font-bold text-xs transition shadow">Trạm 5 <i class="fa-solid fa-chevron-right ml-1"></i></button>
+                </div>
+            </div>
+
+            <!-- UNCLOS and Legal Milestones Timeline -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <h3 class="text-lg font-black text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-scale-balanced text-brand-ocean"></i> CÁC MỐC PHÁP LÝ QUAN TRỌNG VỀ BẢO VỆ CHỦ QUYỀN BIỂN ĐẢO
+                </h3>
+
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <span class="px-3 py-1 bg-brand-ocean text-white font-black text-xs rounded-xl shrink-0">12 - 5 - 1977</span>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Tuyên bố của Chính phủ Nước CHXHCN Việt Nam</h4>
+                            <p class="text-xs text-slate-600 mt-1">Quy định về lãnh hải, vùng tiếp giáp lãnh hải, vùng đặc quyền kinh tế và thềm lục địa của Việt Nam.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <span class="px-3 py-1 bg-brand-ocean text-white font-black text-xs rounded-xl shrink-0">9 - 12 - 1982</span>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Ký Công ước Liên Hợp Quốc về Luật Biển (UNCLOS 1982)</h4>
+                            <p class="text-xs text-slate-600 mt-1">Việt Nam là một trong những quốc gia tham gia ký kết UNCLOS 1982 ngay từ đầu, khẳng định tôn trọng luật pháp quốc tế.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <span class="px-3 py-1 bg-brand-ocean text-white font-black text-xs rounded-xl shrink-0">23 - 6 - 1994</span>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Quốc hội phê chuẩn UNCLOS 1982</h4>
+                            <p class="text-xs text-slate-600 mt-1">Khẳng định chủ quyền của Việt Nam đối với các vùng biển, đảo theo quy định của luật pháp quốc tế.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                        <span class="px-3 py-1 bg-brand-ocean text-white font-black text-xs rounded-xl shrink-0">21 - 6 - 2012</span>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Thông qua Luật Biển Việt Nam</h4>
+                            <p class="text-xs text-slate-600 mt-1">Luật có hiệu lực từ 1-1-2013, tạo khuôn khổ pháp lý hoàn chỉnh cho việc quản lý và bảo vệ biển đảo Việt Nam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 Interactive Gates activity -->
+            <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl border border-slate-800">
+                <div>
+                    <h3 class="text-lg font-black text-brand-gold flex items-center gap-2">
+                        <i class="fa-solid fa-door-open"></i> HOẠT ĐỘNG: "4 CỬA GIẢI MÃ BIỂN ĐÔNG"
+                    </h3>
+                    <p class="text-xs text-slate-400 mt-1">Chạm vào từng cửa để mở ra phương châm đấu tranh bảo vệ chủ quyền Biển Đông</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <button onclick="toggleGate('gate1')" class="p-5 rounded-2xl bg-slate-800 hover:bg-brand-ocean border border-slate-700 transition flex flex-col items-center text-center space-y-2">
+                        <i class="fa-solid fa-book-law text-2xl text-amber-400"></i>
+                        <span class="font-bold text-xs sm:text-sm">CỬA 1: LUẬT BIỂN</span>
+                    </button>
+                    <button onclick="toggleGate('gate2')" class="p-5 rounded-2xl bg-slate-800 hover:bg-brand-ocean border border-slate-700 transition flex flex-col items-center text-center space-y-2">
+                        <i class="fa-solid fa-globe text-2xl text-amber-400"></i>
+                        <span class="font-bold text-xs sm:text-sm">CỬA 2: UNCLOS 1982</span>
+                    </button>
+                    <button onclick="toggleGate('gate3')" class="p-5 rounded-2xl bg-slate-800 hover:bg-brand-ocean border border-slate-700 transition flex flex-col items-center text-center space-y-2">
+                        <i class="fa-solid fa-anchor text-2xl text-amber-400"></i>
+                        <span class="font-bold text-xs sm:text-sm">CỬA 3: CHỦ QUYỀN</span>
+                    </button>
+                    <button onclick="toggleGate('gate4')" class="p-5 rounded-2xl bg-slate-800 hover:bg-brand-ocean border border-slate-700 transition flex flex-col items-center text-center space-y-2">
+                        <i class="fa-solid fa-dove text-2xl text-amber-400"></i>
+                        <span class="font-bold text-xs sm:text-sm">CỬA 4: HÒA BÌNH</span>
+                    </button>
+                </div>
+
+                <div id="gateInfoBox" class="bg-slate-800 border border-slate-700 p-5 rounded-2xl text-xs sm:text-sm text-cyan-100 leading-relaxed">
+                    <span class="font-bold text-brand-gold"><i class="fa-solid fa-info-circle mr-1"></i> Thông tin:</span> Nhấp vào các cửa ở trên để khám phá nội dung đấu tranh bảo vệ Biển Đông.
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN: STATION 5 - Ý NGHĨA LỊCH SỬ -->
+        <section id="station-st5" class="station-screen hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-amber-700 to-brand-red text-white p-6 sm:p-8 rounded-3xl shadow-lg border-b-4 border-brand-gold flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-brand-gold text-slate-950 font-black text-xs">⭐ TRẠM 5</span>
+                    <h2 class="text-2xl sm:text-3xl font-black mt-2">5. Ý NGHĨA LỊCH SỬ CỦA CÁC CUỘC ĐẤU TRANH BẢO VỆ TỔ QUỐC</h2>
+                    <p class="text-xs sm:text-sm text-amber-100 mt-1">Đánh giá tầm vóc lịch sử đối với Việt Nam, Dân tộc và Khu vực quốc tế.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showStation('st4')" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition"><i class="fa-solid fa-chevron-left mr-1"></i> Trạm 4</button>
+                    <button onclick="showStation('st6')" class="px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs transition shadow">Trạm 6 <i class="fa-solid fa-chevron-right ml-1"></i></button>
+                </div>
+            </div>
+
+            <!-- 3 Interactive Meaning Circles Grid -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Circle 1 -->
+                <div onclick="showMeaningDetail('vn')" class="bg-white hover:bg-red-50/50 rounded-3xl p-6 border-2 border-slate-200 hover:border-brand-red cursor-pointer transition shadow-sm space-y-4 text-center group">
+                    <div class="w-16 h-16 rounded-full bg-red-100 text-brand-red flex items-center justify-center text-2xl mx-auto group-hover:scale-110 transition">
+                        🇻🇳
+                    </div>
+                    <h3 class="font-black text-slate-900 text-lg">ĐỐI VỚI VIỆT NAM</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Bảo vệ vững chắc độc lập, chủ quyền, thống nhất và toàn vẹn lãnh thổ của Tổ quốc xã hội chủ nghĩa.
+                    </p>
+                    <span class="inline-block text-[11px] font-bold text-brand-red">Bấm để xem thêm <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+
+                <!-- Circle 2 -->
+                <div onclick="showMeaningDetail('dantoc')" class="bg-white hover:bg-amber-50/50 rounded-3xl p-6 border-2 border-slate-200 hover:border-amber-500 cursor-pointer transition shadow-sm space-y-4 text-center group">
+                    <div class="w-16 h-16 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-2xl mx-auto group-hover:scale-110 transition">
+                        🏛
+                    </div>
+                    <h3 class="font-black text-slate-900 text-lg">ĐỐI VỚI DÂN TỘC</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Khẳng định ý chí độc lập, tự chủ, tinh thần đại đoàn kết toàn dân tộc; tạo môi trường hòa bình để phát triển.
+                    </p>
+                    <span class="inline-block text-[11px] font-bold text-amber-800">Bấm để xem thêm <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+
+                <!-- Circle 3 -->
+                <div onclick="showMeaningDetail('khuvuc')" class="bg-white hover:bg-blue-50/50 rounded-3xl p-6 border-2 border-slate-200 hover:border-brand-ocean cursor-pointer transition shadow-sm space-y-4 text-center group">
+                    <div class="w-16 h-16 rounded-full bg-blue-100 text-brand-ocean flex items-center justify-center text-2xl mx-auto group-hover:scale-110 transition">
+                        🌏
+                    </div>
+                    <h3 class="font-black text-slate-900 text-lg">ĐỐI VỚI KHU VỰC</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Góp phần bảo vệ hòa bình, ổn định ở khu vực Đông Nam Á và trên thế giới; cứu dân tộc Campuchia khỏi chế độ diệt chủng.
+                    </p>
+                    <span class="inline-block text-[11px] font-bold text-brand-ocean">Bấm để xem thêm <i class="fa-solid fa-arrow-right"></i></span>
+                </div>
+            </div>
+
+            <!-- Detail Modal/Container -->
+            <div id="meaningDetailBox" class="hidden p-6 rounded-3xl bg-white border border-slate-200 shadow-md text-sm text-slate-700 leading-relaxed">
+                <!-- Dynamic text -->
+            </div>
+        </section>
+
+        <!-- SCREEN: STATION 6 - MỘT SỐ BÀI HỌC LỊCH SỬ (5 KEYS GAME) -->
+        <section id="station-st6" class="station-screen hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <!-- Header Banner -->
+            <div class="bg-gradient-to-r from-slate-900 via-brand-darkred to-brand-red text-white p-6 sm:p-8 rounded-3xl shadow-lg border-b-4 border-brand-gold flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-brand-gold text-slate-950 font-black text-xs">💡 TRẠM 6 TRỌNG TÂM</span>
+                    <h2 class="text-2xl sm:text-3xl font-black mt-2">6. MỘT SỐ BÀI HỌC LỊCH SỬ TỪ NĂM 1945 ĐẾN NAY</h2>
+                    <p class="text-xs sm:text-sm text-amber-200 mt-1">Trò chơi "5 Chìa khóa Lịch sử" - Trả lời đúng để mở khóa trọn vẹn 5 bài học chiến lược.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="showStation('st5')" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition"><i class="fa-solid fa-chevron-left mr-1"></i> Trạm 5</button>
+                    <button onclick="showStation('st7')" class="px-4 py-2 rounded-xl bg-brand-gold text-slate-950 hover:bg-amber-400 font-bold text-xs transition shadow">Trạm 7 <i class="fa-solid fa-chevron-right ml-1"></i></button>
+                </div>
+            </div>
+
+            <!-- 5 Keys Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                <button onclick="openKeyModal(1)" id="keyBtn1" class="p-5 rounded-2xl bg-slate-900 border-2 border-slate-700 text-white hover:border-brand-gold transition flex flex-col items-center text-center space-y-2">
+                    <i id="keyIcon1" class="fa-solid fa-key text-3xl text-slate-500"></i>
+                    <span class="font-bold text-xs">BÀI HỌC 1</span>
+                    <span id="keyLabel1" class="text-[10px] text-slate-400">Chưa mở khóa</span>
+                </button>
+                <button onclick="openKeyModal(2)" id="keyBtn2" class="p-5 rounded-2xl bg-slate-900 border-2 border-slate-700 text-white hover:border-brand-gold transition flex flex-col items-center text-center space-y-2">
+                    <i id="keyIcon2" class="fa-solid fa-key text-3xl text-slate-500"></i>
+                    <span class="font-bold text-xs">BÀI HỌC 2</span>
+                    <span id="keyLabel2" class="text-[10px] text-slate-400">Chưa mở khóa</span>
+                </button>
+                <button onclick="openKeyModal(3)" id="keyBtn3" class="p-5 rounded-2xl bg-slate-900 border-2 border-slate-700 text-white hover:border-brand-gold transition flex flex-col items-center text-center space-y-2">
+                    <i id="keyIcon3" class="fa-solid fa-key text-3xl text-slate-500"></i>
+                    <span class="font-bold text-xs">BÀI HỌC 3</span>
+                    <span id="keyLabel3" class="text-[10px] text-slate-400">Chưa mở khóa</span>
+                </button>
+                <button onclick="openKeyModal(4)" id="keyBtn4" class="p-5 rounded-2xl bg-slate-900 border-2 border-slate-700 text-white hover:border-brand-gold transition flex flex-col items-center text-center space-y-2">
+                    <i id="keyIcon4" class="fa-solid fa-key text-3xl text-slate-500"></i>
+                    <span class="font-bold text-xs">BÀI HỌC 4</span>
+                    <span id="keyLabel4" class="text-[10px] text-slate-400">Chưa mở khóa</span>
+                </button>
+                <button onclick="openKeyModal(5)" id="keyBtn5" class="p-5 rounded-2xl bg-slate-900 border-2 border-slate-700 text-white hover:border-brand-gold transition flex flex-col items-center text-center space-y-2 col-span-2 sm:col-span-1">
+                    <i id="keyIcon5" class="fa-solid fa-key text-3xl text-slate-500"></i>
+                    <span class="font-bold text-xs">BÀI HỌC 5</span>
+                    <span id="keyLabel5" class="text-[10px] text-slate-400">Chưa mở khóa</span>
+                </button>
+            </div>
+
+            <!-- Lessons unlocked showcase display -->
+            <div id="unlockedLessonsBox" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <h3 class="text-lg font-black text-slate-900 border-b border-slate-100 pb-3 flex items-center justify-between">
+                    <span><i class="fa-solid fa-unlock-keyhole text-brand-red"></i> NỘI DUNG 5 BÀI HỌC LỊCH SỬ TỔNG HỢP SGK:</span>
+                    <span id="unlockCountBadge" class="text-xs px-2.5 py-1 bg-amber-100 text-amber-900 font-bold rounded-full">Đã mở: 0/5</span>
+                </h3>
+
+                <div class="space-y-4" id="lessonsList">
+                    <!-- Lesson 1 Card -->
+                    <div id="lessonCard1" class="p-4 rounded-2xl border border-slate-200 bg-slate-50 opacity-60 transition">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-slate-300 text-slate-700 text-xs flex items-center justify-center font-bold">1</span>
+                            Không ngừng phát huy tinh thần yêu nước
+                        </h4>
+                        <p class="text-xs text-slate-600 mt-2">Tinh thần yêu nước là cội nguồn sức mạnh, là động lực tinh thần vô giá giúp dân tộc vượt qua mọi thử thách hiểm nghèo để bảo vệ vững chắc độc lập dân tộc.</p>
+                    </div>
+
+                    <!-- Lesson 2 Card -->
+                    <div id="lessonCard2" class="p-4 rounded-2xl border border-slate-200 bg-slate-50 opacity-60 transition">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-slate-300 text-slate-700 text-xs flex items-center justify-center font-bold">2</span>
+                            Củng cố, tăng cường khối đại đoàn kết toàn dân tộc
+                        </h4>
+                        <p class="text-xs text-slate-600 mt-2">Đại đoàn kết là đường lối chiến lược nhất quán. Kết hợp sức mạnh của toàn dân, các tầng lớp xã hội, các dân tộc, tôn giáo thành sức mạnh tổng hợp.</p>
+                    </div>
+
+                    <!-- Lesson 3 Card -->
+                    <div id="lessonCard3" class="p-4 rounded-2xl border border-slate-200 bg-slate-50 opacity-60 transition">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-slate-300 text-slate-700 text-xs flex items-center justify-center font-bold">3</span>
+                            Kết hợp sức mạnh dân tộc với sức mạnh thời đại
+                        </h4>
+                        <p class="text-xs text-slate-600 mt-2">Phát huy nội lực dân tộc làm gốc, đồng thời tranh thủ tối đa sự giúp đỡ, ủng hộ quốc tế, tôn trọng luật pháp quốc tế và xu thế hòa bình thế giới.</p>
+                    </div>
+
+                    <!-- Lesson 4 Card -->
+                    <div id="lessonCard4" class="p-4 rounded-2xl border border-slate-200 bg-slate-50 opacity-60 transition">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-slate-300 text-slate-700 text-xs flex items-center justify-center font-bold">4</span>
+                            Kết hợp chặt chẽ hai nhiệm vụ chiến lược: Xây dựng và Bảo vệ Tổ quốc
+                        </h4>
+                        <p class="text-xs text-slate-600 mt-2">Xây dựng đất nước vững mạnh về kinh tế, chính trị, văn hóa là cơ sở để tăng cường quốc phòng; quốc phòng vững mạnh bảo vệ an toàn cho sự nghiệp xây dựng.</p>
+                    </div>
+
+                    <!-- Lesson 5 Card -->
+                    <div id="lessonCard5" class="p-4 rounded-2xl border border-slate-200 bg-slate-50 opacity-60 transition">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-slate-300 text-slate-700 text-xs flex items-center justify-center font-bold">5</span>
+                            Phát triển sáng tạo nghệ thuật chiến tranh nhân dân
+                        </h4>
+                        <p class="text-xs text-slate-600 mt-2">Vận dụng linh hoạt, sáng tạo phương châm "Toàn dân, toàn diện", kết hợp đấu tranh quân sự, chính trị, ngoại giao phù hợp với thực tiễn chiến trường.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN: STATION 7 - THỬ THÁCH LỊCH SỬ (12 QUESTIONS QUIZ) -->
+        <section id="station-st7" class="station-screen hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <div class="max-w-3xl mx-auto bg-white rounded-3xl border border-slate-200 shadow-md p-6 sm:p-8 space-y-6">
+                <!-- Header & Progress -->
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <div>
+                        <span class="text-xs font-bold text-brand-red uppercase tracking-wider">🎯 TRẠM 7: THỬ THÁCH LỊCH SỬ</span>
+                        <h3 class="text-xl font-black text-slate-900">Kiểm Tra Trắc Nghiệm Tổng Hợp Bài 9</h3>
+                    </div>
+                    <div class="text-right">
+                        <span id="mainQuizScore" class="text-2xl font-black text-brand-red">0/12</span>
+                        <div class="text-[10px] text-slate-500 font-bold">Điểm số hiện tại</div>
+                    </div>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                    <div id="mainQuizProgressBar" class="bg-brand-red h-full transition-all duration-300" style="width: 8%;"></div>
+                </div>
+
+                <!-- Question Box Container -->
+                <div id="mainQuizQuestionBox" class="space-y-6 min-h-[280px]">
+                    <!-- Dynamic Question Rendering -->
+                </div>
+
+                <!-- Controls -->
+                <div class="flex justify-between items-center border-t border-slate-100 pt-4">
+                    <button id="prevMainQuizBtn" onclick="navigateMainQuiz(-1)" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition disabled:opacity-40">
+                        <i class="fa-solid fa-arrow-left mr-1"></i> Câu trước
+                    </button>
+                    <button id="nextMainQuizBtn" onclick="navigateMainQuiz(1)" class="px-5 py-2 rounded-xl bg-brand-red hover:bg-brand-darkred text-white font-bold text-xs transition shadow">
+                        Câu tiếp theo <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN: STATION 8 - SƠ ĐỒ TƯ DUY & TƯ LIỆU SỐ -->
+        <section id="station-st8" class="station-screen hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <!-- Mindmap section -->
+            <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl border border-slate-800">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                    <div>
+                        <span class="px-3 py-1 rounded-full bg-brand-gold text-slate-950 font-black text-xs">🧠 TRẠM 8</span>
+                        <h2 class="text-2xl sm:text-3xl font-black mt-2">SƠ ĐỒ TƯ DUY MỞ RỘNG BÀI 9</h2>
+                        <p class="text-xs text-slate-400 mt-1">Chạm vào các nhánh để phóng to chi tiết hệ thống kiến thức SGK</p>
+                    </div>
+                </div>
+
+                <!-- Mindmap Interactive Trees -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                    <div onclick="toggleMindmapBranch('mm1')" class="bg-slate-800 p-4 rounded-2xl border border-slate-700 hover:border-brand-gold cursor-pointer transition">
+                        <span class="text-xs text-brand-gold font-bold">NHÁNH 1</span>
+                        <h4 class="font-bold text-white text-sm mt-1">BỐI CẢNH</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Thuận lợi & Thách thức sau tháng 4-1975</p>
+                    </div>
+                    <div onclick="toggleMindmapBranch('mm2')" class="bg-slate-800 p-4 rounded-2xl border border-slate-700 hover:border-brand-gold cursor-pointer transition">
+                        <span class="text-xs text-brand-gold font-bold">NHÁNH 2</span>
+                        <h4 class="font-bold text-white text-sm mt-1">TÂY NAM</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">1975-1977 & 1977-1979</p>
+                    </div>
+                    <div onclick="toggleMindmapBranch('mm3')" class="bg-slate-800 p-4 rounded-2xl border border-slate-700 hover:border-brand-gold cursor-pointer transition">
+                        <span class="text-xs text-brand-gold font-bold">NHÁNH 3</span>
+                        <h4 class="font-bold text-white text-sm mt-1">BIÊN GIỚI BẮC</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">Sự kiện 1979 & 6 tỉnh biên giới</p>
+                    </div>
+                    <div onclick="toggleMindmapBranch('mm4')" class="bg-slate-800 p-4 rounded-2xl border border-slate-700 hover:border-brand-gold cursor-pointer transition">
+                        <span class="text-xs text-brand-gold font-bold">NHÁNH 4</span>
+                        <h4 class="font-bold text-white text-sm mt-1">BIỂN ĐÔNG</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">UNCLOS 1982 & Luật Biển 2012</p>
+                    </div>
+                    <div onclick="toggleMindmapBranch('mm5')" class="bg-slate-800 p-4 rounded-2xl border border-slate-700 hover:border-brand-gold cursor-pointer transition col-span-2 sm:col-span-1">
+                        <span class="text-xs text-brand-gold font-bold">NHÁNH 5</span>
+                        <h4 class="font-bold text-white text-sm mt-1">BÀI HỌC</h4>
+                        <p class="text-[11px] text-slate-400 mt-1">5 Bài học lịch sử trọng tâm</p>
+                    </div>
+                </div>
+
+                <div id="mindmapDisplayCard" class="p-5 rounded-2xl bg-slate-800/90 border border-slate-700 text-xs sm:text-sm text-slate-200 leading-relaxed">
+                    Nhấp vào một trong năm nhánh ở trên để xem sơ đồ tư duy phân nhánh chi tiết.
+                </div>
+            </div>
+
+            <!-- QR Document Library Placeholders -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <h3 class="text-lg font-black text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-qrcode text-brand-red"></i> THƯ VIỆN TƯ LIỆU MỞ RỘNG & MÃ QR SGK
+                </h3>
+
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 flex flex-col items-center text-center space-y-3">
+                        <div class="w-12 h-12 bg-red-100 text-brand-red rounded-xl flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-shield"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xs">Mã QR 01: Tư liệu Tây Nam</h4>
+                        <div class="p-2 bg-white rounded-xl border border-slate-300 text-[10px] text-slate-500 w-full text-center">
+                            [DÁN MÃ QR THỰC TẾ TẠI ĐÂY]
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 flex flex-col items-center text-center space-y-3">
+                        <div class="w-12 h-12 bg-blue-100 text-brand-ocean rounded-xl flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xs">Mã QR 02: Tư liệu Biển Đông</h4>
+                        <div class="p-2 bg-white rounded-xl border border-slate-300 text-[10px] text-slate-500 w-full text-center">
+                            [DÁN MÃ QR THỰC TẾ TẠI ĐÂY]
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50 flex flex-col items-center text-center space-y-3">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-800 rounded-xl flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xs">Mã QR 03: UNCLOS 1982</h4>
+                        <div class="p-2 bg-white rounded-xl border border-slate-300 text-[10px] text-slate-500 w-full text-center">
+                            [DÁN MÃ QR THỰC TẾ TẠI ĐÂY]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SCREEN: STATION 9 - PHẦN LUYỆN TẬP, VẬN DỤNG VÀ HOÀN THÀNH HÀNH TRÌNH -->
+        <section id="station-st9" class="station-screen hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <!-- 60-Second Timeline Summary -->
+            <div class="bg-gradient-to-r from-red-900 to-slate-900 text-white rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl border-b-4 border-brand-gold">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="px-3 py-1 rounded-full bg-brand-gold text-slate-950 font-black text-xs">🏆 TRẠM 9</span>
+                        <h2 class="text-2xl sm:text-3xl font-black mt-2">DÒNG THỜI GIAN 60 GIÂY TỔNG KẾT</h2>
+                    </div>
+                    <button onclick="start60sTimeline()" class="px-4 py-2 bg-brand-red hover:bg-brand-darkred text-white text-xs font-bold rounded-xl transition shadow">
+                        ▶ Phát tự động
+                    </button>
+                </div>
+
+                <div id="timeline60sBox" class="p-5 rounded-2xl bg-black/40 border border-white/10 text-center font-bold text-amber-300 text-sm sm:text-base">
+                    Bấm "Phát tự động" để xem lại tóm tắt chuỗi sự kiện lịch sử trong 60 giây.
+                </div>
+            </div>
+
+            <!-- Application Tasks Box -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                <h3 class="text-lg font-black text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-pen-nib text-brand-red"></i> HOẠT ĐỘNG VẬN DỤNG (LỊCH SỬ VỚI CUỘC SỐNG)
+                </h3>
+
+                <div class="space-y-4">
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                        <h4 class="font-bold text-slate-900 text-sm">Nhiệm vụ 1:</h4>
+                        <p class="text-xs text-slate-600">Sưu tầm tư liệu và xây dựng bài giới thiệu ngắn (300 từ) về một địa danh hoặc nhân vật gắn liền với cuộc đấu tranh bảo vệ biên giới Tây Nam / phía Bắc / Biển Đông.</p>
+                        <textarea placeholder="Nhập câu trả lời hoặc ghi chú của học sinh tại đây..." class="w-full h-24 p-3 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-brand-red"></textarea>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+                        <h4 class="font-bold text-slate-900 text-sm">Nhiệm vụ 2:</h4>
+                        <p class="text-xs text-slate-600">Từ các bài học lịch sử đã học, em hãy nêu 3 việc làm cụ thể của thế hệ trẻ hiện nay để góp phần bảo vệ chủ quyền biển đảo Tổ quốc.</p>
+                        <textarea placeholder="Nhập câu trả lời của học sinh tại đây..." class="w-full h-24 p-3 rounded-xl border border-slate-300 text-xs focus:outline-none focus:border-brand-red"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Self-Evaluation Table Checklist -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+                <h3 class="text-lg font-black text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-clipboard-check text-emerald-600"></i> BẢNG TỰ ĐÁNH GIÁ KẾT QUẢ HỌC TẬP
+                </h3>
+
+                <div class="space-y-2">
+                    <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 accent-brand-red">
+                        <span class="text-xs font-semibold text-slate-800">Em đã hiểu rõ bối cảnh lịch sử đất nước sau tháng 4-1975</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 accent-brand-red">
+                        <span class="text-xs font-semibold text-slate-800">Em nắm vững diễn biến cuộc đấu tranh biên giới Tây Nam & Biên giới phía Bắc</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 accent-brand-red">
+                        <span class="text-xs font-semibold text-slate-800">Em hiểu rõ cơ sở pháp lý và phương châm bảo vệ chủ quyền Biển Đông</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 cursor-pointer">
+                        <input type="checkbox" class="w-4 h-4 accent-brand-red">
+                        <span class="text-xs font-semibold text-slate-800">Em đã thuộc và khắc sâu 5 Bài học lịch sử trọng tâm từ 1945 đến nay</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Completion Banner -->
+            <div class="bg-slate-900 text-white rounded-3xl p-8 text-center space-y-4 border-4 border-brand-gold shadow-2xl">
+                <div class="w-20 h-20 rounded-full bg-brand-gold text-slate-950 text-4xl font-black flex items-center justify-center mx-auto shadow-lg">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h3 class="text-2xl sm:text-3xl font-black text-brand-gold">🎉 CHÚC MỪNG! EM ĐÃ HOÀN THÀNH HÀNH TRÌNH BẢO VỆ TỔ QUỐC</h3>
+                <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto">
+                    5 Từ khóa cốt lõi cần ghi nhớ: <br>
+                    <span class="text-amber-400 font-bold">❤️ YÊU NƯỚC • 🤝 ĐẠI ĐOÀN KẾT • 🌏 SỨC MẠNH THỜI ĐẠI • 🛡 XÂY DỰNG & BẢO VỆ • 💪 CHIẾN TRANH NHÂN DÂN</span>
+                </p>
+                <div class="pt-4 flex justify-center gap-3">
+                    <button onclick="showStation('cover')" class="px-6 py-3 rounded-xl bg-brand-red hover:bg-brand-darkred text-white font-bold text-xs transition">
+                        <i class="fa-solid fa-house mr-1"></i> Về Trang Chủ
+                    </button>
+                    <button onclick="showStation('st7')" class="px-6 py-3 rounded-xl bg-brand-gold text-slate-950 font-bold text-xs transition">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Làm lại Thử thách
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-8 border-t-4 border-brand-red mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p class="text-xs sm:text-sm font-bold text-slate-200">
+                HỌC LIỆU SỐ TƯƠNG TÁC LỊCH SỬ 12 • BÀI 9 (KẾT NỐI TRI THỨC VỚI CUỘC SỐNG)
+            </p>
+            <p class="text-[11px] text-slate-500">
+                Thiết kế phục vụ học tập & giảng dạy trực tuyến chuẩn GDPT 2018
+            </p>
+        </div>
+    </footer>
+
+    <!-- STATION MAP DRAWER MODAL -->
+    <div id="mapModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-slate-200 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleMapModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 font-bold flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-red text-white flex items-center justify-center text-xl">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-black text-slate-900">BẢN ĐỒ BẢNG TRẠM HỌC TẬP</h3>
+                    <p class="text-xs text-slate-500">Chọn trạm lịch sử muốn di chuyển đến nhanh</p>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-3" id="stationMapGrid">
+                <!-- Station buttons JS populated -->
+            </div>
+        </div>
+    </div>
+
+    <!-- KEY UNLOCK MODAL -->
+    <div id="keyModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-5 shadow-2xl border border-slate-200 relative">
+            <button onclick="closeKeyModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 font-bold flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-2">
+                <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center mx-auto text-2xl font-black">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <h3 id="keyModalTitle" class="text-lg font-black text-slate-900">MỞ KHÓA BÀI HỌC LỊCH SỬ</h3>
+                <p class="text-xs text-slate-500">Trả lời đúng câu hỏi dưới đây để mở khóa chìa khóa bài học này</p>
+            </div>
+
+            <div id="keyModalBody" class="space-y-4">
+                <!-- Question content -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ----------------------------------------------------
+           APPLICATION STATE & DATA DEFINITIONS
+        ---------------------------------------------------- */
+        let soundEnabled = true;
+        let unlockedKeys = [false, false, false, false, false];
+        let currentKeyIndex = 0;
+
+        // Audio Effects Generator via Web Audio API
+        function playAudioEffect(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'correct') {
+                    osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+                    osc.frequency.setValueAtTime(880, ctx.currentTime + 0.1); // A5
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.3);
+                } else if (type === 'wrong') {
+                    osc.frequency.setValueAtTime(220, ctx.currentTime); // A3
+                    osc.frequency.setValueAtTime(164.81, ctx.currentTime + 0.1); // E3
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.3);
+                } else if (type === 'click') {
+                    osc.frequency.setValueAtTime(440, ctx.currentTime);
+                    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.05);
+                }
+            } catch (e) {
+                // Ignore audio context autoplay restrictions
+            }
+        }
+
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const icon = document.getElementById('soundIcon');
+            if (soundEnabled) {
+                icon.className = 'fa-solid fa-volume-high text-brand-red';
+            } else {
+                icon.className = 'fa-solid fa-volume-xmark text-slate-400';
+            }
+        }
+
+        /* ----------------------------------------------------
+           STATION NAVIGATION ENGINE
+        ---------------------------------------------------- */
+        const stationsList = [
+            { id: 'cover', title: 'Trang bìa Hành trình', icon: 'fa-house' },
+            { id: 'warmup', title: 'Khởi động & Mục tiêu', icon: 'fa-flag' },
+            { id: 'st1', title: 'Trạm 1: Bối cảnh lịch sử', icon: 'fa-layer-group' },
+            { id: 'st2', title: 'Trạm 2: Biên giới Tây Nam', icon: 'fa-shield' },
+            { id: 'st3', title: 'Trạm 3: Biên giới phía Bắc', icon: 'fa-mountain' },
+            { id: 'st4', title: 'Trạm 4: Chủ quyền Biển Đông', icon: 'fa-water' },
+            { id: 'st5', title: 'Trạm 5: Ý nghĩa lịch sử', icon: 'fa-star' },
+            { id: 'st6', title: 'Trạm 6: 5 Bài học lịch sử', icon: 'fa-key' },
+            { id: 'st7', title: 'Trạm 7: Thử thách Lịch sử', icon: 'fa-gamepad' },
+            { id: 'st8', title: 'Trạm 8: Sơ đồ tư duy', icon: 'fa-sitemap' },
+            { id: 'st9', title: 'Trạm 9: Tổng kết & Vận dụng', icon: 'fa-trophy' }
+        ];
+
+        function showStation(stationId) {
+            playAudioEffect('click');
+            document.querySelectorAll('.station-screen').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById(`station-${stationId}`);
+            if (target) {
+                target.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            closeMapModal();
+        }
+
+        function toggleMapModal() {
+            const modal = document.getElementById('mapModal');
+            if (modal.classList.contains('hidden')) {
+                renderStationMapGrid();
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function closeMapModal() {
+            document.getElementById('mapModal').classList.add('hidden');
+        }
+
+        function renderStationMapGrid() {
+            const container = document.getElementById('stationMapGrid');
+            container.innerHTML = stationsList.map((st, idx) => `
+                <button onclick="showStation('${st.id}')" class="p-3 rounded-2xl bg-slate-50 hover:bg-red-50 hover:border-brand-red border border-slate-200 transition text-left flex items-center gap-3 group">
+                    <div class="w-8 h-8 rounded-xl bg-slate-200 group-hover:bg-brand-red group-hover:text-white font-black text-xs flex items-center justify-center shrink-0">
+                        ${idx}
+                    </div>
+                    <div>
+                        <div class="font-bold text-xs text-slate-900 group-hover:text-brand-red">${st.title}</div>
+                    </div>
+                </button>
+            `).join('');
+        }
+
+        /* ----------------------------------------------------
+           WARMUP LOGIC
+        ---------------------------------------------------- */
+        function answerWarmup(choice) {
+            const feedback = document.getElementById('warmupFeedback');
+            const feedbackText = document.getElementById('warmupFeedbackText');
+            feedback.classList.remove('hidden');
+
+            if (choice === 'B') {
+                playAudioEffect('correct');
+                feedbackText.innerHTML = `<span class="text-emerald-700 font-bold">Chính xác!</span> Sau năm 1975, mặc dù đất nước hoàn toàn hòa bình, thống nhất, nhiệm vụ bảo vệ Tổ quốc vẫn luôn là nhiệm vụ chiến lược thường xuyên, gắn liền với công cuộc xây dựng đất nước.`;
+            } else {
+                playAudioEffect('wrong');
+                feedbackText.innerHTML = `<span class="text-red-700 font-bold">Chưa đúng!</span> Mặc dù nước ta hoàn toàn thống nhất, nhưng các nguy cơ đe dọa chủ quyền biên giới và hải đảo vẫn xuất hiện. Vì vậy, bảo vệ Tổ quốc luôn là nhiệm vụ song hành cùng xây dựng đất nước.`;
+            }
+        }
+
+        /* ----------------------------------------------------
+           STATION 1: DRAG/DROP ASSIGNMENT LOGIC
+        ---------------------------------------------------- */
+        const st1State = { 'card-1': null, 'card-2': null, 'card-3': null, 'card-4': null, 'card-5': null };
+
+        function assignSt1Card(cardId, zoneType) {
+            playAudioEffect('click');
+            const card = document.getElementById(cardId);
+            const targetContainer = document.getElementById(`container-${zoneType}`);
+            targetContainer.appendChild(card);
+            st1State[cardId] = zoneType;
+
+            // Check if all assigned
+            const allAssigned = Object.values(st1State).every(val => val !== null);
+            if (allAssigned) {
+                document.getElementById('st1ResultFeedback').classList.remove('hidden');
+                playAudioEffect('correct');
+            }
+        }
+
+        function resetSt1Activity() {
+            const bank = document.getElementById('st1CardBank');
+            ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'].forEach(id => {
+                bank.appendChild(document.getElementById(id));
+                st1State[id] = null;
+            });
+            document.getElementById('st1ResultFeedback').classList.add('hidden');
+        }
+
+        /* ----------------------------------------------------
+           STATION 2: SOUTHWEST MINI QUIZ
+        ---------------------------------------------------- */
+        const st2Questions = [
+            {
+                q: 'Quân Pôn Pốt mở cuộc tiến công mở màn trên toàn tuyến biên giới Tây Nam (An Giang) vào ngày nào?',
+                options: ['30-4-1975', '30-4-1977', '7-1-1979', '17-2-1979'],
+                ans: 1,
+                exp: 'Ngày 30-4-1977, tập đoàn Pôn Pốt bất ngờ nổ súng tiến công trên toàn tuyến biên giới Tây Nam tỉnh An Giang.'
+            },
+            {
+                q: 'Sự kiện ngày 7-1-1979 có ý nghĩa lịch sử gì quan trọng?',
+                options: ['Ký Hiệp định hòa bình', 'Giải phóng Phnôm Pênh, cứu nhân dân Campuchia khỏi chế độ diệt chủng', 'Giải phóng Hoàng Sa', 'Pháp rút khỏi Đông Dương'],
+                ans: 1,
+                exp: 'Ngày 7-1-1979, Quân voluntar VN cùng lực lượng cách mạng Campuchia giải phóng Phnôm Pênh, cứu nhân dân Campuchia thoát thảm họa diệt chủng.'
+            },
+            {
+                q: 'Nội dung nào phản ánh đúng bản chất cuộc chiến đấu ở biên giới Tây Nam của nhân dân Việt Nam?',
+                options: ['Cuộc chiến tranh xâm lược', 'Cuộc chiến đấu tự vệ chính đáng & thực hiện nghĩa vụ quốc tế cao cả', 'Mở rộng lãnh thổ', 'Tranh chấp kinh tế'],
+                ans: 1,
+                exp: 'Đây là cuộc chiến đấu bảo vệ chủ quyền lãnh thổ chính đáng và giúp đỡ cách mạng Campuchia chân chính.'
+            }
+        ];
+
+        let st2UserAns = [null, null, null];
+
+        function renderSt2Quiz() {
+            const container = document.getElementById('st2QuizContainer');
+            container.innerHTML = st2Questions.map((item, qIdx) => `
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+                    <p class="font-bold text-xs sm:text-sm text-slate-900">${qIdx + 1}. ${item.q}</p>
+                    <div class="grid sm:grid-cols-2 gap-2">
+                        ${item.options.map((opt, oIdx) => `
+                            <button onclick="answerSt2(${qIdx}, ${oIdx})" class="p-2.5 rounded-xl border text-left text-xs font-semibold transition ${st2UserAns[qIdx] === oIdx ? (oIdx === item.ans ? 'bg-emerald-100 border-emerald-500 text-emerald-900' : 'bg-red-100 border-red-500 text-red-900') : 'bg-white hover:border-brand-red text-slate-800'}">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function answerSt2(qIdx, oIdx) {
+            st2UserAns[qIdx] = oIdx;
+            if (oIdx === st2Questions[qIdx].ans) playAudioEffect('correct');
+            else playAudioEffect('wrong');
+
+            const correctCount = st2UserAns.filter((ans, i) => ans === st2Questions[i].ans).length;
+            document.getElementById('st2Score').innerText = `Đã đúng: ${correctCount}/3`;
+            renderSt2Quiz();
+        }
+
+        /* ----------------------------------------------------
+           STATION 3: NORTHERN BORDER PROVINCES INFO
+        ---------------------------------------------------- */
+        const provinceInfo = {
+            'hagiang': '<strong>Mặt trận Vị Xuyên (Hà Giang):</strong> Nơi diễn ra những trận chiến đấu phòng ngự ác liệt kéo dài suốt những năm 1984 - 1989. Các chiến sĩ ta với tinh thần "Sống bám đá đánh địch, chết hóa đá bất tử" đã kiên cường giữ vững từng cao điểm thiêng liêng.',
+            'caobang': '<strong>Biên giới Cao Bằng:</strong> Ngày 17-2-1979, quân dân Cao Bằng đã dũng cảm chặn đánh các hướng tiến công của quân xâm lược, bẻ gãy nhiều đợt đột kích.',
+            'langson': '<strong>Mặt trận Đồng Đăng - Lạng Sơn:</strong> Địa bàn chiến lược trọng yếu trên hướng tiến công chính, quân dân Lạng Sơn đã kiên cường chiến đấu, gây thiệt hại nặng cho lực lượng đối phương.',
+            'laocai': '<strong>Mặt trận Lào Cai - Cam Đường:</strong> Các lực lượng vũ trang địa phương và nhân dân Lào Cai đã anh dũng bám trụ, đánh trả quyết liệt các đợt tiến công.',
+            'quangninh': '<strong>Khu vực Móng Cái (Quảng Ninh):</strong> Lực lượng tự vệ và nhân dân vùng mỏ đã chủ động phòng ngự, giữ vững an ninh tuyến biển và biên giới đất liền.'
+        };
+
+        function showProvinceInfo(provKey) {
+            playAudioEffect('click');
+            const card = document.getElementById('provinceInfoCard');
+            card.innerHTML = provinceInfo[provKey];
+        }
+
+        /* ----------------------------------------------------
+           STATION 4: EAST SEA GATES LOGIC
+        ---------------------------------------------------- */
+        const gateData = {
+            'gate1': '<strong>CỬA 1 - LUẬT BIỂN VIỆT NAM:</strong> Thông qua năm 2012 (có hiệu lực 2013), khẳng định Việt Nam có đầy đủ chủ quyền, quyền chủ quyền và quyền tài khoản đối với các vùng biển, đảo theo quy định của Luật pháp quốc tế.',
+            'gate2': '<strong>CỬA 2 - UNCLOS 1982:</strong> Việt Nam là thành viên tích cực, luôn thượng tôn pháp luật quốc tế, giải quyết mọi bất đồng trên Biển Đông bằng biện pháp hòa bình dựa trên UNCLOS 1982.',
+            'gate3': '<strong>CỬA 3 - CHỦ QUYỀN HOÀNG SA & TRƯỜNG SA:</strong> Việt Nam có đầy đủ chứng cứ lịch sử và cơ sở pháp lý khẳng định chủ quyền đối với hai quần đảo Hoàng Sa và Trường Sa liên tục qua các thời kỳ.',
+            'gate4': '<strong>CỬA 4 - HÒA BÌNH & ỔN ĐỊNH:</strong> Thực hiện kiên trì, kiên quyết bảo vệ chủ quyền đồng thời giữ vững môi trường hòa bình, ổn định, xây dựng Biển Đông thành vùng biển hòa bình, hợp tác cùng phát triển.'
+        };
+
+        function toggleGate(gateKey) {
+            playAudioEffect('click');
+            document.getElementById('gateInfoBox').innerHTML = gateData[gateKey];
+        }
+
+        /* ----------------------------------------------------
+           STATION 5: MEANING DETAILS
+        ---------------------------------------------------- */
+        function showMeaningDetail(type) {
+            playAudioEffect('click');
+            const box = document.getElementById('meaningDetailBox');
+            box.classList.remove('hidden');
+
+            if (type === 'vn') {
+                box.innerHTML = `<span class="font-bold text-brand-red">🇻🇳 ĐỐI VỚI VIỆT NAM:</span> Bảo vệ vững chắc từng tấc đất, vùng biển, vùng trời của Tổ quốc; giữ vững thành quả cách mạng và chế độ xã hội chủ nghĩa mà nhân dân ta đã tốn bao xương máu xây dựng.`;
+            } else if (type === 'dantoc') {
+                box.innerHTML = `<span class="font-bold text-amber-800">🏛 ĐỐI VỚI DÂN TỘC:</span> Khai thác và phát huy cao độ tinh thần yêu nước, củng cố niềm tin của nhân dân vào sự lãnh đạo của Đảng; tạo dựng nền tảng quốc phòng toàn dân vững chắc.`;
+            } else {
+                box.innerHTML = `<span class="font-bold text-brand-ocean">🌏 ĐỐI VỚI KHU VỰC & QUỐC TẾ:</span> Thể hiện tinh thần quốc tế cao cả (giúp nhân dân Campuchia thoát diệt chủng), đóng góp tích cực vào duy trì hòa bình, an ninh khu vực Đông Nam Á.`;
+            }
+        }
+
+        /* ----------------------------------------------------
+           STATION 6: 5 KEYS UNLOCK GAME
+        ---------------------------------------------------- */
+        const keyQuestions = [
+            {
+                q: 'Bài học 1 nhấn mạnh yếu tố nào là cội nguồn sức mạnh quyết định thắng lợi của mọi cuộc kháng chiến?',
+                options: ['Viện trợ nước ngoài', 'Tinh thần yêu nước của nhân dân', 'Vũ khí hiện đại', 'Kinh tế giàu mạnh'],
+                ans: 1
+            },
+            {
+                q: 'Khối đại đoàn kết toàn dân tộc được xây dựng dựa trên nguyên tắc nền tảng nào?',
+                options: ['Phân chia giai cấp', 'Liên minh công - nông - trí thức dưới sự lãnh đạo của Đảng', 'Chỉ dựa vào quân đội', 'Đóng cửa nền kinh tế'],
+                ans: 1
+            },
+            {
+                q: 'Kết hợp sức mạnh dân tộc với sức mạnh thời đại đòi hỏi điều gì?',
+                options: ['Chỉ trông chờ sự giúp đỡ quốc tế', 'Tranh thủ xu thế hòa bình, tôn trọng luật pháp quốc tế trên cơ sở giữ vững độc lập tự chủ', 'Không giao lưu quốc tế', 'Phụ thuộc vào các nước lớn'],
+                ans: 1
+            },
+            {
+                q: 'Mối quan hệ giữa hai nhiệm vụ chiến lược Xây dựng và Bảo vệ Tổ quốc là gì?',
+                options: ['Tách rời nhau hoàn toàn', 'Xây dựng là nền tảng để củng cố quốc phòng; Quốc phòng mạnh bảo vệ sự nghiệp xây dựng', 'Chỉ tập trung bảo vệ', 'Chỉ tập trung xây dựng'],
+                ans: 1
+            },
+            {
+                q: 'Nghệ thuật chiến tranh nhân dân Việt Nam nổi bật với nét độc đáo nào?',
+                options: ['Chiến tranh hiện đại phụ thuộc máy móc', 'Toàn dân đánh giặc, kết hợp đấu tranh quân sự, chính trị, ngoại giao', 'Chỉ đánh ở đồng bằng', 'Không cần căn cứ địa'],
+                ans: 1
+            }
+        ];
+
+        function openKeyModal(keyNum) {
+            playAudioEffect('click');
+            currentKeyIndex = keyNum - 1;
+            const modal = document.getElementById('keyModal');
+            document.getElementById('keyModalTitle').innerText = `MỞ KHÓA BÀI HỌC ${keyNum}`;
+            
+            const q = keyQuestions[currentKeyIndex];
+            document.getElementById('keyModalBody').innerHTML = `
+                <p class="font-bold text-xs sm:text-sm text-slate-900">${q.q}</p>
+                <div class="space-y-2">
+                    ${q.options.map((opt, idx) => `
+                        <button onclick="submitKeyAnswer(${idx})" class="w-full text-left p-3 rounded-xl border border-slate-200 hover:border-brand-red bg-slate-50 text-xs font-semibold text-slate-800 transition">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeKeyModal() {
+            document.getElementById('keyModal').classList.add('hidden');
+        }
+
+        function submitKeyAnswer(optIdx) {
+            const q = keyQuestions[currentKeyIndex];
+            if (optIdx === q.ans) {
+                playAudioEffect('correct');
+                unlockedKeys[currentKeyIndex] = true;
+                updateKeyUI(currentKeyIndex + 1);
+                closeKeyModal();
+            } else {
+                playAudioEffect('wrong');
+                alert('Chưa chính xác! Hãy suy nghĩ kĩ và thử lại.');
+            }
+        }
+
+        function updateKeyUI(keyNum) {
+            const idx = keyNum - 1;
+            document.getElementById(`keyIcon${keyNum}`).className = 'fa-solid fa-key text-3xl text-brand-gold';
+            document.getElementById(`keyBtn${keyNum}`).classList.add('border-brand-gold', 'bg-slate-800');
+            document.getElementById(`keyLabel${keyNum}`).innerText = 'ĐÃ MỞ KHÓA';
+            document.getElementById(`keyLabel${keyNum}`).className = 'text-[10px] text-amber-400 font-bold';
+
+            document.getElementById(`lessonCard${keyNum}`).classList.remove('opacity-60', 'bg-slate-50');
+            document.getElementById(`lessonCard${keyNum}`).classList.add('bg-amber-50/60', 'border-amber-300');
+
+            const count = unlockedKeys.filter(Boolean).length;
+            document.getElementById('unlockCountBadge').innerText = `Đã mở: ${count}/5`;
+        }
+
+        /* ----------------------------------------------------
+           STATION 7: MAIN QUIZ (12 QUESTIONS)
+        ---------------------------------------------------- */
+        const mainQuizData = [
+            {
+                q: 'Chiến thắng nào ngày 7-1-1979 đã giúp nhân dân Campuchia thoát khỏi thảm họa diệt chủng?',
+                options: ['Giải phóng Sài Gòn', 'Giải phóng Thủ đô Phnôm Pênh', 'Chiến dịch Biên giới', 'Chiến dịch Việt Bắc'],
+                ans: 1,
+                exp: 'Ngày 7-1-1979, Quân voluntar VN phối hợp lực lượng cách mạng Campuchia giải phóng Phnôm Pênh.'
+            },
+            {
+                q: 'Cuộc chiến đấu bảo vệ biên giới phía Bắc bùng nổ vào thời gian nào?',
+                options: ['30-4-1977', '17-2-1979', '5-3-1979', '18-3-1979'],
+                ans: 1,
+                exp: 'Sáng 17-2-1979, quân Trung Quốc tiến công đồng loạt trên toàn tuyến biên giới phía Bắc Việt Nam.'
+            },
+            {
+                q: 'Ủy ban Thường vụ Quốc hội nước CHXHCN Việt Nam ra lệnh Tổng động viên toàn quốc vào ngày nào?',
+                options: ['17-2-1979', '5-3-1979', '18-3-1979', '21-6-2012'],
+                ans: 1,
+                exp: 'Ngày 5-3-1979, Quốc hội công bố lệnh Tổng động viên toàn quốc bảo vệ Tổ quốc.'
+            },
+            {
+                q: 'Công ước Liên Hợp Quốc về Luật Biển (UNCLOS) được ký kết vào năm nào?',
+                options: ['1977', '1982', '1994', '2012'],
+                ans: 1,
+                exp: 'UNCLOS được các nước ký kết năm 1982 tại Montego Bay (Jamaica).'
+            },
+            {
+                q: 'Luật Biển Việt Nam được Quốc hội khóa XIII thông qua vào năm nào?',
+                options: ['1994', '2000', '2012', '2018'],
+                ans: 2,
+                exp: 'Quốc hội Việt Nam thông qua Luật Biển Việt Nam ngày 21-6-2012.'
+            },
+            {
+                q: 'Phương châm đấu tranh bảo vệ chủ quyền biển đảo của Việt Nam là gì?',
+                options: ['Dùng vũ lực quân sự', 'Kiên quyết, kiên trì đấu tranh bằng biện pháp hòa bình trên cơ sở luật pháp quốc tế', 'Bỏ qua tranh chấp', 'Đóng cửa biển'],
+                ans: 1,
+                exp: 'Việt Nam chủ trương giải quyết hòa bình các tranh chấp trên Biển Đông theo UNCLOS 1982.'
+            },
+            {
+                q: 'Bài học lịch sử về củng cố khối đại đoàn kết toàn dân tộc có vai trò như thế nào?',
+                options: ['Là yếu tố phụ', 'Là đường lối chiến lược tạo nên sức mạnh tổng hợp bảo vệ Tổ quốc', 'Chỉ áp dụng trong thời chiến', 'Không còn quan trọng'],
+                ans: 1,
+                exp: 'Đại đoàn kết toàn dân tộc là nguồn sức mạnh vô địch của cách mạng Việt Nam.'
+            },
+            {
+                q: 'Cuộc tiến công mở màn của tập đoàn Pôn Pốt năm 1977 diễn ra chủ yếu ở tỉnh nào của Việt Nam?',
+                options: ['Tây Ninh', 'An Giang', 'Kiên Giang', 'Long An'],
+                ans: 1,
+                exp: 'Ngày 30-4-1977, Pôn Pốt đánh chiếm tuyến biên giới tỉnh An Giang.'
+            },
+            {
+                q: 'Việt Nam ra Tuyên bố về lãnh hải, vùng đặc quyền kinh tế và thềm lục địa vào thời gian nào?',
+                options: ['12-5-1977', '9-12-1982', '23-6-1994', '1-1-2013'],
+                ans: 0,
+                exp: 'Chính phủ Việt Nam ra tuyên bố quan trọng này vào ngày 12-5-1977.'
+            },
+            {
+                q: 'Tác dụng của việc kết hợp hai nhiệm vụ chiến lược Xây dựng và Bảo vệ Tổ quốc là gì?',
+                options: ['Tạo sức mạnh toàn diện về kinh tế, chính trị, quốc phòng', 'Làm suy yếu kinh tế', 'Tăng chi phí quốc phòng', 'Làm giảm uy tín quốc tế'],
+                ans: 0,
+                exp: 'Hai nhiệm vụ chiến lược song hành tạo sức mạnh bền vững cho đất nước.'
+            },
+            {
+                q: 'Thắng lợi của cuộc chiến đấu bảo vệ biên giới Tây Nam đã giúp cứu một dân tộc thoát khỏi:',
+                options: ['Nạn đói', 'Thảm họa diệt chủng Pôn Pốt', 'Chế độ phong kiến', 'Chủ nghĩa thực dân cũ'],
+                ans: 1,
+                exp: 'Quân dân Việt Nam đã giúp cứu hơn 3 triệu người dân Campuchia khỏi chế độ diệt chủng.'
+            },
+            {
+                q: 'Trách nhiệm của học sinh lớp 12 trong sự nghiệp bảo vệ Tổ quốc hiện nay là gì?',
+                options: ['Tu dưỡng đạo đức, học tập tốt, tìm hiểu lịch sử, bảo vệ chủ quyền số và biển đảo', 'Chỉ cần chơi game', 'Không quan tâm thời sự', 'Rời bỏ đất nước'],
+                ans: 0,
+                exp: 'Học sinh tích cực học tập, rèn luyện và có những hành động thiết thực bảo vệ Tổ quốc.'
+            }
+        ];
+
+        let currentMainQuizIndex = 0;
+        let mainQuizUserAns = Array(mainQuizData.length).fill(null);
+
+        function renderMainQuiz() {
+            const item = mainQuizData[currentMainQuizIndex];
+            const box = document.getElementById('mainQuizQuestionBox');
+            const selected = mainQuizUserAns[currentMainQuizIndex];
+
+            box.innerHTML = `
+                <div>
+                    <span class="text-xs font-bold text-slate-400">Câu hỏi ${currentMainQuizIndex + 1} / ${mainQuizData.length}</span>
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 mt-1 mb-4">${item.q}</h4>
+                    <div class="space-y-2.5">
+                        ${item.options.map((opt, idx) => {
+                            let btnStyle = "border-slate-200 hover:border-brand-red bg-white text-slate-800";
+                            if (selected !== null) {
+                                if (idx === item.ans) btnStyle = "border-emerald-500 bg-emerald-50 text-emerald-900 font-bold";
+                                else if (idx === selected) btnStyle = "border-red-500 bg-red-50 text-red-900 font-bold";
+                            }
+                            return `
+                                <button onclick="selectMainQuizOption(${idx})" ${selected !== null ? 'disabled' : ''} class="w-full text-left p-3.5 rounded-xl border-2 transition text-xs sm:text-sm flex items-center ${btnStyle}">
+                                    <span class="w-6 h-6 rounded-full bg-slate-100 font-bold text-xs flex items-center justify-center mr-3 shrink-0">${String.fromCharCode(65 + idx)}</span>
+                                    <span>${opt}</span>
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                    ${selected !== null ? `
+                        <div class="mt-4 p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs leading-relaxed">
+                            <span class="font-bold"><i class="fa-solid fa-lightbulb mr-1"></i> Giải thích:</span> ${item.exp}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+
+            // Progress bar
+            const pct = ((currentMainQuizIndex + 1) / mainQuizData.length) * 100;
+            document.getElementById('mainQuizProgressBar').style.width = `${pct}%`;
+
+            // Score counter
+            const score = mainQuizUserAns.filter((ans, idx) => ans === mainQuizData[idx].ans).length;
+            document.getElementById('mainQuizScore').innerText = `${score}/12`;
+
+            document.getElementById('prevMainQuizBtn').disabled = (currentMainQuizIndex === 0);
+            document.getElementById('nextMainQuizBtn').innerHTML = (currentMainQuizIndex === mainQuizData.length - 1) ? 'Hoàn thành <i class="fa-solid fa-check ml-1"></i>' : 'Câu tiếp theo <i class="fa-solid fa-arrow-right ml-1"></i>';
+        }
+
+        function selectMainQuizOption(optIdx) {
+            mainQuizUserAns[currentMainQuizIndex] = optIdx;
+            if (optIdx === mainQuizData[currentMainQuizIndex].ans) playAudioEffect('correct');
+            else playAudioEffect('wrong');
+            renderMainQuiz();
+        }
+
+        function navigateMainQuiz(dir) {
+            playAudioEffect('click');
+            const newIndex = currentMainQuizIndex + dir;
+            if (newIndex >= 0 && newIndex < mainQuizData.length) {
+                currentMainQuizIndex = newIndex;
+                renderMainQuiz();
+            } else if (newIndex >= mainQuizData.length) {
+                showStation('st9');
+            }
+        }
+
+        /* ----------------------------------------------------
+           STATION 8: MINDMAP BRANCHES
+        ---------------------------------------------------- */
+        const mmDetails = {
+            'mm1': '<strong>NHÁNH 1: BỐI CẢNH (SGK):</strong> Nước VN hoàn toàn thống nhất (4-1975) -> Bước vào thời kỳ XD XHCN -> Thách thức: Pôn Pốt gây chiến biên giới Tây Nam & biến động quốc tế phức tạp.',
+            'mm2': '<strong>NHÁNH 2: TÂY NAM (1975-1979):</strong> Pôn Pốt xâm lược An Giang (30-4-1977) -> Ta phòng ngự đánh trả -> Phản công & giúp cách mạng Campuchia -> Giải phóng Phnôm Pênh (7-1-1979).',
+            'mm3': '<strong>NHÁNH 3: BIÊN GIỚI PHÍA BẮC (1979):</strong> TQ tiến công 6 tỉnh biên giới (17-2-1979) -> Quốc hội ra Lệnh Tổng động viên (5-3-1979) -> Ta đánh trả ngoan cường -> Địch rút quân (18-3-1979).',
+            'mm4': '<strong>NHÁNH 4: CHỦ QUYỀN BIỂN ĐÔNG:</strong> Tuyên bố Tuyên bố lãnh hải (1977) -> UNCLOS 1982 -> Luật Biển VN (2012) -> Đấu tranh hòa bình dựa trên luật pháp quốc tế.',
+            'mm5': '<strong>NHÁNH 5: 5 BÀI HỌC LỊCH SỬ:</strong> 1. Tinh thần Yêu nước • 2. Đại đoàn kết toàn dân • 3. Sức mạnh dân tộc + thời đại • 4. Xây dựng + Bảo vệ Tổ quốc • 5. Nghệ thuật Chiến tranh nhân dân.'
+        };
+
+        function toggleMindmapBranch(branchKey) {
+            playAudioEffect('click');
+            document.getElementById('mindmapDisplayCard').innerHTML = mmDetails[branchKey];
+        }
+
+        /* ----------------------------------------------------
+           STATION 9: 60s TIMELINE AUTOMATION
+        ---------------------------------------------------- */
+        function start60sTimeline() {
+            playAudioEffect('click');
+            const box = document.getElementById('timeline60sBox');
+            const events = [
+                '⏳ 1975: Đất nước hoàn toàn hòa bình, thống nhất.',
+                '⚔️ 30-4-1977: Quân Pôn Pốt tiến công biên giới Tây Nam.',
+                '🇰🇭 7-1-1979: Giải phóng Phnôm Pênh, cứu nhân dân Campuchia.',
+                '🏔 17-2-1979: Cuộc chiến đấu bảo vệ biên giới phía Bắc bùng nổ.',
+                '📜 1982: Ký Công ước Luật biển UNCLOS 1982.',
+                '🇻🇳 2012: Quốc hội thông qua Luật Biển Việt Nam.',
+                '💡 HÔM NAY: Phát huy 5 Bài học lịch sử bảo vệ vững chắc Tổ quốc!'
+            ];
+
+            let idx = 0;
+            const timer = setInterval(() => {
+                box.innerHTML = `<span class="text-amber-400 font-extrabold text-base sm:text-lg animate-bounce inline-block">${events[idx]}</span>`;
+                playAudioEffect('click');
+                idx++;
+                if (idx >= events.length) clearInterval(timer);
+            }, 2000);
+        }
+
+        /* ----------------------------------------------------
+           APP INITIALIZATION
+        ---------------------------------------------------- */
+        document.addEventListener('DOMContentLoaded', function() {
+            renderSt2Quiz();
+            renderMainQuiz();
+        });
+    </script>
+</body>
+</html>

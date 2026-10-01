@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 8: Cuộc kháng chiến chống Mĩ, cứu nước (1954 - 1975)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter & Merriweather for historical feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        crimson: {
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                            950: '#450a0a',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and flip animations */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d97706;
+            border-radius: 4px;
+        }
+        .page-slide {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        .page-slide.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-flip {
+            perspective: 1000px;
+        }
+        .card-flip-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card-flip.flipped .card-flip-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+        .star-pattern {
+            background-color: #7f1d1d;
+            background-image: radial-gradient(#d97706 0.75px, transparent 0.75px), radial-gradient(#d97706 0.75px, #7f1d1d 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+    </style>
+</head>
+<body class="bg-navy-950 text-slate-100 font-sans min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-navy-950">
+
+    <!-- TOP HEADER / PROGRESS BAR -->
+    <header class="bg-navy-900 border-b border-gold-600/30 sticky top-0 z-50 shadow-lg backdrop-blur-md bg-opacity-95">
+        <div class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <button onclick="goToPage(1)" class="flex items-center space-x-2 text-gold-400 font-serif font-bold text-lg hover:text-gold-500 transition">
+                    <i class="fa-solid font-bold text-xl fa-star text-gold-500 animate-pulse"></i>
+                    <span class="hidden sm:inline">LỊCH SỬ 12 - BÀI 8</span>
+                </button>
+                <span class="text-slate-500 hidden md:inline">|</span>
+                <span id="header-title" class="text-xs sm:text-sm font-medium text-slate-300 truncate max-w-[200px] sm:max-w-md">Bìa sách</span>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <button onclick="toggleAudio()" id="audio-btn" title="Bật/Tắt âm thanh" class="p-2 rounded-lg bg-navy-800 hover:bg-slate-700 text-gold-400 transition border border-slate-700">
+                    <i class="fa-solid fa-volume-high" id="audio-icon"></i>
+                </button>
+                <button onclick="toggleTOC()" title="Mục lục bài học" class="px-3 py-1.5 rounded-lg bg-navy-800 hover:bg-slate-700 text-slate-200 text-xs sm:text-sm font-medium transition border border-slate-700 flex items-center space-x-1">
+                    <i class="fa-solid fa-list-ul text-gold-400"></i>
+                    <span class="hidden sm:inline">Mục lục</span>
+                </button>
+                <button onclick="goToPage(16)" title="Kiểm tra kiến thức" class="px-3 py-1.5 rounded-lg bg-crimson-800 hover:bg-crimson-900 text-gold-400 text-xs sm:text-sm font-semibold transition border border-gold-500/40 flex items-center space-x-1 shadow">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span class="hidden sm:inline">Kiểm tra</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="w-full bg-slate-800 h-1.5">
+            <div id="progress-bar" class="bg-gradient-to-r from-gold-600 via-gold-400 to-yellow-300 h-1.5 transition-all duration-300 w-[5%]"></div>
+        </div>
+    </header>
+
+    <!-- MAIN FLIPBOOK CONTAINER -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-3 sm:px-6 py-4 flex flex-col justify-center relative">
+
+        <!-- ================= PAGE 1: TRANG BÌA ================= -->
+        <div id="page-1" class="page-slide active">
+            <div class="star-pattern rounded-2xl border-2 border-gold-500/50 p-6 sm:p-12 text-center shadow-2xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+                <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+                    <div class="inline-block px-4 py-1 rounded-full bg-gold-500/20 border border-gold-400 text-gold-400 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-2">
+                        Bộ sách Kết nối tri thức với cuộc sống
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif font-black text-gold-400 tracking-tight leading-tight uppercase drop-shadow-md">
+                        BÀI 8: CUỘC KHÁNG CHIẾN CHỐNG MĨ, CỨU NƯỚC <br class="hidden sm:inline">
+                        <span class="text-white text-2xl sm:text-4xl block mt-2">(1954 – 1975)</span>
+                    </h1>
+                    <p class="text-xl sm:text-2xl font-serif italic text-amber-200 tracking-wide font-light">
+                        “HÀNH TRÌNH LỊCH SỬ 21 NĂM”
+                    </p>
+
+                    <!-- Background visuals card grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 my-6 opacity-90">
+                        <div class="bg-navy-900/80 p-3 rounded-lg border border-gold-500/30 text-xs text-amber-100">
+                            <i class="fa-solid fa-map text-gold-400 text-lg mb-1 block"></i>
+                            Bản đồ Việt Nam 1954–1975
+                        </div>
+                        <div class="bg-navy-900/80 p-3 rounded-lg border border-gold-500/30 text-xs text-amber-100">
+                            <i class="fa-solid fa-monument text-gold-400 text-lg mb-1 block"></i>
+                            Thành cổ Quảng Trị
+                        </div>
+                        <div class="bg-navy-900/80 p-3 rounded-lg border border-gold-500/30 text-xs text-amber-100">
+                            <i class="fa-solid fa-route text-gold-400 text-lg mb-1 block"></i>
+                            Đường Trường Sơn
+                        </div>
+                        <div class="bg-navy-900/80 p-3 rounded-lg border border-gold-500/30 text-xs text-amber-100">
+                            <i class="fa-solid fa-flag text-gold-400 text-lg mb-1 block"></i>
+                            30/4/1975 Dinh Độc Lập
+                        </div>
+                    </div>
+
+                    <button onclick="nextPage()" class="inline-flex items-center space-x-3 px-8 py-4 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-navy-950 font-black text-lg shadow-xl hover:scale-105 transition transform duration-200">
+                        <span>▶ BẮT ĐẦU HÀNH TRÌNH</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 2: KHỞI ĐỘNG ================= -->
+        <div id="page-2" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl">
+                <div class="text-center mb-6">
+                    <span class="text-gold-400 text-xs uppercase tracking-widest font-bold">Khởi động bài học</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mt-1">EM CÓ NHẬN RA?</h2>
+                    <p class="text-slate-300 text-sm mt-2">Hãy quan sát các mảnh ghép tư liệu lịch sử dưới đây:</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700 flex flex-col items-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-crimson-900/60 border border-gold-500/40 flex items-center justify-center text-gold-400 mb-2 text-xl">
+                            <i class="fa-solid fa-monument"></i>
+                        </div>
+                        <h4 class="font-bold text-gold-400 text-sm">Thành cổ Quảng Trị</h4>
+                        <p class="text-xs text-slate-400 mt-1">Mùa hè đỏ lửa 1972 - 81 ngày đêm rực lửa chiến đấu.</p>
+                    </div>
+
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700 flex flex-col items-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-crimson-900/60 border border-gold-500/40 flex items-center justify-center text-gold-400 mb-2 text-xl">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h4 class="font-bold text-gold-400 text-sm">Phong trào Đồng khởi</h4>
+                        <p class="text-xs text-slate-400 mt-1">Bến Tre 1960 - "Đội quân tóc dài" bẻ gãy ách kìm kẹp.</p>
+                    </div>
+
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700 flex flex-col items-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-crimson-900/60 border border-gold-500/40 flex items-center justify-center text-gold-400 mb-2 text-xl">
+                            <i class="fa-solid fa-plane-military"></i>
+                        </div>
+                        <h4 class="font-bold text-gold-400 text-sm">Máy bay B-52</h4>
+                        <p class="text-xs text-slate-400 mt-1">Tập kích Hà Nội - Hải Phòng 12 ngày đêm 1972.</p>
+                    </div>
+
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700 flex flex-col items-center text-center">
+                        <div class="w-12 h-12 rounded-full bg-crimson-900/60 border border-gold-500/40 flex items-center justify-center text-gold-400 mb-2 text-xl">
+                            <i class="fa-solid fa-truck-monster"></i>
+                        </div>
+                        <h4 class="font-bold text-gold-400 text-sm">Đường Trường Sơn</h4>
+                        <p class="text-xs text-slate-400 mt-1">Tuyến đường Hồ Chí Minh huyền thoại chi viện cho Miền Nam.</p>
+                    </div>
+
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700 flex flex-col items-center text-center sm:col-span-2 md:col-span-1">
+                        <div class="w-12 h-12 rounded-full bg-crimson-900/60 border border-gold-500/40 flex items-center justify-center text-gold-400 mb-2 text-xl">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <h4 class="font-bold text-gold-400 text-sm">Dinh Độc Lập 30/4/1975</h4>
+                        <p class="text-xs text-slate-400 mt-1">Xe tăng cắm cờ giải phóng, kết thúc 21 năm kháng chiến.</p>
+                    </div>
+                </div>
+
+                <div class="bg-navy-800/80 p-5 rounded-xl border border-gold-500/30 text-center space-y-3">
+                    <p class="text-slate-200 text-base font-medium">👉 Những hình ảnh này gợi cho em nhớ đến sự kiện / thời kì lịch sử nào?</p>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <button onclick="checkWarmupAnswer(true)" class="px-5 py-2.5 rounded-lg bg-crimson-800 hover:bg-crimson-700 text-amber-200 font-semibold text-sm transition border border-gold-500/30">
+                            A. Cuộc kháng chiến chống Mĩ, cứu nước (1954 – 1975)
+                        </button>
+                        <button onclick="checkWarmupAnswer(false)" class="px-5 py-2.5 rounded-lg bg-navy-700 hover:bg-slate-700 text-slate-300 font-medium text-sm transition">
+                            B. Cuộc kháng chiến chống Pháp (1945 – 1954)
+                        </button>
+                    </div>
+                    <div id="warmup-feedback" class="hidden p-3 rounded-lg text-sm font-semibold transition"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 3: MỤC TIÊU BÀI HỌC ================= -->
+        <div id="page-3" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl">
+                <div class="text-center mb-8">
+                    <span class="text-gold-400 text-xs uppercase tracking-widest font-bold">Chuẩn đầu ra GDPT 2018</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mt-1">SAU BÀI HỌC, EM CÓ THỂ…</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-navy-800/70 p-4 rounded-xl border-l-4 border-gold-500 flex items-start space-x-3">
+                        <div class="text-gold-400 text-xl font-bold mt-0.5"><i class="fa-solid fa-book-bookmark"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-100 text-sm">Về năng lực lịch sử:</h4>
+                            <ul class="text-xs text-slate-300 space-y-1.5 mt-2 list-disc list-inside">
+                                <li>Biết cách sưu tầm và sử dụng tư liệu lịch sử để khai thác thông tin.</li>
+                                <li>Trình bày được nét khái quát về bối cảnh lịch sử cuộc kháng chiến.</li>
+                                <li>Trình bày được các giai đoạn phát triển chính (1954 - 1975).</li>
+                                <li>Nêu được nguyên nhân thắng lợi & phân tích ý nghĩa lịch sử.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-navy-800/70 p-4 rounded-xl border-l-4 border-crimson-800 flex items-start space-x-3">
+                        <div class="text-gold-400 text-xl font-bold mt-0.5"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-100 text-sm">Về phẩm chất & thái độ:</h4>
+                            <ul class="text-xs text-slate-300 space-y-1.5 mt-2 list-disc list-inside">
+                                <li>Trân trọng, tự hào về truyền thống bất khuất, anh hùng của cha ông.</li>
+                                <li>Có ý thức tham gia các hoạt động đền ơn đáp nghĩa, uống nước nhớ nguồn.</li>
+                                <li>Củng cố niềm tin vào sự lãnh đạo của Đảng và công cuộc bảo vệ Tổ quốc.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 text-center">
+                    <button onclick="nextPage()" class="px-6 py-3 rounded-xl bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-sm shadow-md transition">
+                        Khám phá Bản đồ Hành trình 1954 – 1975 <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 4: BẢN ĐỒ HÀNH TRÌNH ================= -->
+        <div id="page-4" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl">
+                <div class="text-center mb-6">
+                    <span class="text-gold-400 text-xs uppercase tracking-widest font-bold">Tổng quan tiến trình</span>
+                    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white mt-1">BẢN ĐỒ HÀNH TRÌNH 1954 – 1975</h2>
+                    <p class="text-slate-300 text-xs sm:text-sm mt-1">Bấm chọn từng Chặng để chuyển đến nội dung chi tiết:</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 my-8">
+                    <button onclick="goToPage(6)" class="p-4 rounded-xl bg-gradient-to-b from-navy-800 to-crimson-900/40 border border-gold-500/40 hover:border-gold-400 text-center group transition">
+                        <span class="block text-xs font-bold text-gold-400 uppercase">Chặng 1</span>
+                        <span class="block text-lg font-bold text-white mt-1">1954 – 1960</span>
+                        <span class="block text-[11px] text-slate-300 mt-2">Giữ gìn lực lượng & Đồng khởi</span>
+                    </button>
+
+                    <button onclick="goToPage(7)" class="p-4 rounded-xl bg-gradient-to-b from-navy-800 to-crimson-900/40 border border-gold-500/40 hover:border-gold-400 text-center group transition">
+                        <span class="block text-xs font-bold text-gold-400 uppercase">Chặng 2</span>
+                        <span class="block text-lg font-bold text-white mt-1">1961 – 1965</span>
+                        <span class="block text-[11px] text-slate-300 mt-2">Đánh bại "Chiến tranh đặc biệt"</span>
+                    </button>
+
+                    <button onclick="goToPage(8)" class="p-4 rounded-xl bg-gradient-to-b from-navy-800 to-crimson-900/40 border border-gold-500/40 hover:border-gold-400 text-center group transition">
+                        <span class="block text-xs font-bold text-gold-400 uppercase">Chặng 3</span>
+                        <span class="block text-lg font-bold text-white mt-1">1965 – 1968</span>
+                        <span class="block text-[11px] text-slate-300 mt-2">Đánh bại "Chiến tranh cục bộ"</span>
+                    </button>
+
+                    <button onclick="goToPage(9)" class="p-4 rounded-xl bg-gradient-to-b from-navy-800 to-crimson-900/40 border border-gold-500/40 hover:border-gold-400 text-center group transition">
+                        <span class="block text-xs font-bold text-gold-400 uppercase">Chặng 4</span>
+                        <span class="block text-lg font-bold text-white mt-1">1969 – 1973</span>
+                        <span class="block text-[11px] text-slate-300 mt-2">Đánh bại "Việt Nam hóa chiến tranh"</span>
+                    </button>
+
+                    <button onclick="goToPage(10)" class="p-4 rounded-xl bg-gradient-to-b from-navy-800 to-crimson-900/40 border border-gold-500/40 hover:border-gold-400 text-center group transition">
+                        <span class="block text-xs font-bold text-gold-400 uppercase">Chặng 5</span>
+                        <span class="block text-lg font-bold text-white mt-1">1973 – 1975</span>
+                        <span class="block text-[11px] text-slate-300 mt-2">Mùa Xuân toàn thắng 1975</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 5: PHẦN 1 - BỐI CẢNH LỊCH SỬ ================= -->
+        <div id="page-5" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="border-b border-slate-700 pb-4">
+                    <span class="text-gold-400 text-xs uppercase font-bold tracking-wider">I. Bối cảnh lịch sử</span>
+                    <h2 class="text-2xl font-serif font-bold text-white mt-1">VIỆT NAM SAU HIỆP ĐỊNH GIƠ-NE-VƠ (1954)</h2>
+                </div>
+
+                <!-- 2 Miền -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-navy-800/80 p-5 rounded-xl border border-emerald-500/30">
+                        <div class="flex items-center space-x-2 text-emerald-400 font-bold mb-2">
+                            <i class="fa-solid fa-mountain-sun"></i>
+                            <h3>MIỀN BẮC</h3>
+                        </div>
+                        <ul class="text-xs sm:text-sm text-slate-300 space-y-2 list-disc list-inside">
+                            <li>Được hoàn toàn giải phóng.</li>
+                            <li>Tiến lên xây dựng chủ nghĩa xã hội.</li>
+                            <li>Trở thành hậu phương vững chắc cho cách mạng cả nước.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-navy-800/80 p-5 rounded-xl border border-crimson-500/30">
+                        <div class="flex items-center space-x-2 text-crimson-400 font-bold mb-2">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <h3>MIỀN NAM</h3>
+                        </div>
+                        <ul class="text-xs sm:text-sm text-slate-300 space-y-2 list-disc list-inside">
+                            <li>Tiếp tục cuộc cách mạng dân tộc dân chủ nhân dân.</li>
+                            <li>Đấu tranh chống Mĩ và chính quyền tay sai Ngô Đình Diệm để thống nhất đất nước.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Âm mưu của Mĩ & Bối cảnh thế giới -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-navy-800 p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-gold-400 text-sm mb-3 flex items-center">
+                            <i class="fa-solid fa-crosshairs mr-2"></i> ÂM MƯU CỦA MĨ
+                        </h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Thay chân Pháp, dựng nên chính quyền Ngô Đình Diệm, chia cắt Việt Nam, biến miền Nam thành thuộc địa kiểu mới và căn cứ quân sự; ngăn chặn chủ nghĩa cộng sản và phong trào giải phóng dân tộc ở Đông Nam Á.
+                        </p>
+                    </div>
+
+                    <div class="bg-navy-800 p-5 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-gold-400 text-sm mb-3 flex items-center">
+                            <i class="fa-solid fa-globe mr-2"></i> BỐI CẢNH THẾ GIỚI
+                        </h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Hệ thống XHCN phát triển mạnh; Liên Xô và các nước XHCN ủng hộ phong trào giải phóng dân tộc. Sự đối đầu gay gắt giữa hai phe (Chiến tranh lạnh) tác động trực tiếp đến tình hình Việt Nam.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tương tác nhỏ -->
+                <div class="bg-navy-950 p-4 rounded-xl border border-gold-500/30 text-xs">
+                    <p class="font-bold text-amber-200 mb-2">❓ Câu hỏi tư duy: Cuộc kháng chiến chống Mĩ diễn ra trong điều kiện đất nước bị chia cắt làm hai miền với hai nhiệm vụ chiến lược khác nhau đúng hay sai?</p>
+                    <div class="flex space-x-3">
+                        <button onclick="alertFeedback('P5', true, 'Chính xác! Miền Bắc xây dựng XHCN, Miền Nam thực hiện cách mạng dân tộc dân chủ nhân dân.')" class="px-4 py-1.5 rounded bg-emerald-800 hover:bg-emerald-700 text-white font-medium">ĐÚNG</button>
+                        <button onclick="alertFeedback('P5', false, 'Chưa đúng! Hãy đọc lại tình hình hai miền sau năm 1954.')" class="px-4 py-1.5 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 font-medium">SAI</button>
+                    </div>
+                    <div id="fb-P5" class="mt-2 text-amber-300 font-semibold hidden"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 6: CHẶNG 1 (1954 - 1960) ================= -->
+        <div id="page-6" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="border-b border-slate-700 pb-3 flex justify-between items-center">
+                    <div>
+                        <span class="text-gold-400 text-xs uppercase font-bold">Chặng 1 (1954 – 1960)</span>
+                        <h2 class="text-2xl font-serif font-bold text-white">GIỮ GÌN LỰC LƯỢNG – TIẾN TỚI ĐỒNG KHỞI</h2>
+                    </div>
+                    <span class="text-xs bg-gold-500/20 text-gold-400 px-3 py-1 rounded-full border border-gold-500/30">1954 – 1960</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-emerald-400 text-sm mb-2"><i class="fa-solid fa-wheat-awn mr-1"></i> MIỀN BẮC</h4>
+                        <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>Cải cách ruộng đất & khôi phục kinh tế, hàn gắn vết thương chiến tranh.</li>
+                            <li>Cải tạo quan hệ sản xuất, bước đầu phát triển kinh tế - xã hội.</li>
+                            <li>Thực hiện nghĩa vụ hậu phương đối với miền Nam.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-crimson-400 text-sm mb-2"><i class="fa-solid fa-shield-halved mr-1"></i> MIỀN NAM</h4>
+                        <ul class="text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                            <li>Đấu tranh chống chính quyền Ngô Đình Diệm, đòi thi hành Hiệp định Giơ-ne-vơ.</li>
+                            <li>Bảo vệ hòa bình, giữ gìn và phát triển lực lượng cách mạng.</li>
+                            <li>Chuyển từ đấu tranh chính trị đơn thuần sang kết hợp đấu tranh chính trị với vũ lực.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Đồng Khởi Timeline Interactive Game -->
+                <div class="bg-navy-950 p-5 rounded-xl border border-gold-500/30 space-y-3">
+                    <h4 class="font-bold text-gold-400 text-sm"><i class="fa-solid fa-clock-rotate-left mr-1"></i> HOẠT ĐỘNG: GHÉP MỐC THỜI GIAN ĐỒNG KHỞI</h4>
+                    <p class="text-xs text-slate-300">Nối sự kiện nổi bật với mốc thời gian tương ứng (Bấm chọn mốc phù hợp):</p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                        <div class="bg-navy-800 p-3 rounded border border-slate-700 space-y-2">
+                            <span class="font-bold text-amber-200">1. Phong trào nổi dậy ở Vĩnh Thạnh, Bác Ái</span>
+                            <select id="dk-1" class="w-full bg-navy-900 border border-slate-600 rounded p-1.5 text-slate-200">
+                                <option value="">-- Chọn mốc thời gian --</option>
+                                <option value="2/1959">Tháng 2/1959</option>
+                                <option value="8/1959">Tháng 8/1959</option>
+                                <option value="1/1960">Tháng 1/1960</option>
+                                <option value="20/12/1960">20/12/1960</option>
+                            </select>
+                        </div>
+
+                        <div class="bg-navy-800 p-3 rounded border border-slate-700 space-y-2">
+                            <span class="font-bold text-amber-200">2. Cuộc khởi nghĩa Trà Bồng (Quảng Ngãi)</span>
+                            <select id="dk-2" class="w-full bg-navy-900 border border-slate-600 rounded p-1.5 text-slate-200">
+                                <option value="">-- Chọn mốc thời gian --</option>
+                                <option value="2/1959">Tháng 2/1959</option>
+                                <option value="8/1959">Tháng 8/1959</option>
+                                <option value="1/1960">Tháng 1/1960</option>
+                                <option value="20/12/1960">20/12/1960</option>
+                            </select>
+                        </div>
+
+                        <div class="bg-navy-800 p-3 rounded border border-slate-700 space-y-2">
+                            <span class="font-bold text-amber-200">3. Phong trào "Đồng khởi" Bến Tre bùng nổ</span>
+                            <select id="dk-3" class="w-full bg-navy-900 border border-slate-600 rounded p-1.5 text-slate-200">
+                                <option value="">-- Chọn mốc thời gian --</option>
+                                <option value="2/1959">Tháng 2/1959</option>
+                                <option value="8/1959">Tháng 8/1959</option>
+                                <option value="1/1960">Tháng 1/1960</option>
+                                <option value="20/12/1960">20/12/1960</option>
+                            </select>
+                        </div>
+
+                        <div class="bg-navy-800 p-3 rounded border border-slate-700 space-y-2">
+                            <span class="font-bold text-amber-200">4. Thành lập Mặt trận Dân tộc Giải phóng miền Nam VN</span>
+                            <select id="dk-4" class="w-full bg-navy-900 border border-slate-600 rounded p-1.5 text-slate-200">
+                                <option value="">-- Chọn mốc thời gian --</option>
+                                <option value="2/1959">Tháng 2/1959</option>
+                                <option value="8/1959">Tháng 8/1959</option>
+                                <option value="1/1960">Tháng 1/1960</option>
+                                <option value="20/12/1960">20/12/1960</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-3 pt-2">
+                        <button onclick="checkDongKhoiGame()" class="px-4 py-2 bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-xs rounded transition">
+                            Kiểm tra kết quả
+                        </button>
+                        <span id="dk-res" class="text-xs font-semibold"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 7: CHẶNG 2 (1961 - 1965) ================= -->
+        <div id="page-7" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="border-b border-slate-700 pb-3 flex justify-between items-center">
+                    <div>
+                        <span class="text-gold-400 text-xs uppercase font-bold">Chặng 2 (1961 – 1965)</span>
+                        <h2 class="text-2xl font-serif font-bold text-white">ĐÁNH BẠI CHIẾN TRANH ĐẶC BIỆT</h2>
+                    </div>
+                    <span class="text-xs bg-gold-500/20 text-gold-400 px-3 py-1 rounded-full border border-gold-500/30">1961 – 1965</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-emerald-400 text-sm mb-2"><i class="fa-solid fa-industry mr-1"></i> MIỀN BẮC</h4>
+                        <p class="text-slate-300 leading-relaxed">
+                            Thực hiện Kế hoạch Nhà nước 5 năm lần thứ nhất (1961–1965), xây dựng chủ nghĩa xã hội, phát triển công - nông nghiệp, củng cố kinh tế quốc doanh, cải thiện đời sống nhân dân và hết lòng làm hậu phương cho miền Nam.
+                        </p>
+                    </div>
+
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-crimson-400 text-sm mb-2"><i class="fa-solid fa-crosshairs mr-1"></i> "CHIẾN TRANH ĐẶC BIỆT" CỦA MĨ</h4>
+                        <p class="text-slate-300 leading-relaxed">
+                            Chiến lược chiến tranh xâm lược thực dân mới, tiến hành bằng <strong class="text-gold-400">Quân đội Sài Gòn</strong> dưới sự chỉ huy của <strong class="text-gold-400">Cố vấn Mĩ</strong>, dựa vào vũ khí, phương tiện chiến tranh Mĩ. Xương sống: <span class="text-amber-200"> Ấp chiến lược</span>; Chiến thuật: <span class="text-amber-200">Trực thăng vận, Thiết xa vận</span>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Các chiến thắng tiêu biểu -->
+                <div class="bg-navy-950 p-4 rounded-xl border border-slate-700">
+                    <h4 class="font-bold text-gold-400 text-sm mb-3">SƠ ĐỒ CÁC CHIẾN THẮNG TIÊU BIỂU (BẤM VÀO ĐỂ XEM CHI TIẾT)</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                        <button onclick="showDetail('Ấp Bắc (1/1963): Mở ra khả năng đánh bại chiến thuật Trực thăng vận, Thiết xa vận của Mĩ.')" class="p-2 bg-navy-800 hover:bg-crimson-900/60 border border-gold-500/30 rounded text-xs font-bold text-amber-200 text-center">
+                            Ấp Bắc (1/1963)
+                        </button>
+                        <button onclick="showDetail('Bình Giã (12/1964): Làm phá sản về cơ bản chiến lược Chiến tranh đặc biệt.')" class="p-2 bg-navy-800 hover:bg-crimson-900/60 border border-gold-500/30 rounded text-xs font-bold text-amber-200 text-center">
+                            Bình Giã (12/1964)
+                        </button>
+                        <button onclick="showDetail('An Lão (12/1964): Đánh bại các cuộc càn quét lớn của quân đội Sài Gòn.')" class="p-2 bg-navy-800 hover:bg-crimson-900/60 border border-gold-500/30 rounded text-xs font-bold text-amber-200 text-center">
+                            An Lão (12/1964)
+                        </button>
+                        <button onclick="showDetail('Ba Gia (5/1965): Tiêu diệt nhiều sinh lực địch ở Miền Trung.')" class="p-2 bg-navy-800 hover:bg-crimson-900/60 border border-gold-500/30 rounded text-xs font-bold text-amber-200 text-center">
+                            Ba Gia (5/1965)
+                        </button>
+                        <button onclick="showDetail('Đồng Xoài (6/1965): Làm phá sản hoàn toàn chiến lược Chiến tranh đặc biệt.')" class="p-2 bg-navy-800 hover:bg-crimson-900/60 border border-gold-500/30 rounded text-xs font-bold text-amber-200 text-center col-span-2 sm:col-span-1">
+                            Đồng Xoài (6/1965)
+                        </button>
+                    </div>
+                    <div id="detail-box" class="mt-3 p-3 bg-navy-900 rounded border border-slate-700 text-xs text-slate-200 italic">
+                        Bấm vào một thắng lợi phía trên để xem ý nghĩa lịch sử.
+                    </div>
+                </div>
+
+                <!-- Câu hỏi tương tác -->
+                <div class="bg-navy-800/80 p-4 rounded-xl border border-gold-500/30 text-xs">
+                    <p class="font-bold text-gold-400 mb-2">❓ Câu hỏi: Thắng lợi nào đã mở ra khả năng đánh bại chiến thuật "trực thăng vận", "thiết xa vận"?</p>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="alertFeedback('P7', true, 'Chính xác! Chiến thắng Ấp Bắc (1/1963) đã mở đầu khả năng đánh bại chiến thuật hiện đại của Mĩ.')" class="px-3 py-1.5 bg-navy-900 hover:bg-crimson-800 rounded border border-slate-700 text-slate-200">A. Ấp Bắc (1/1963)</button>
+                        <button onclick="alertFeedback('P7', false, 'Chưa đúng. Hãy kiểm tra lại!')" class="px-3 py-1.5 bg-navy-900 hover:bg-slate-700 rounded border border-slate-700 text-slate-200">B. Bình Giã</button>
+                        <button onclick="alertFeedback('P7', false, 'Chưa đúng. Hãy kiểm tra lại!')" class="px-3 py-1.5 bg-navy-900 hover:bg-slate-700 rounded border border-slate-700 text-slate-200">C. Đồng Xoài</button>
+                    </div>
+                    <div id="fb-P7" class="mt-2 text-amber-300 font-semibold hidden"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 8: CHẶNG 3 (1965 - 1968) ================= -->
+        <div id="page-8" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="border-b border-slate-700 pb-3 flex justify-between items-center">
+                    <div>
+                        <span class="text-gold-400 text-xs uppercase font-bold">Chặng 3 (1965 – 1968)</span>
+                        <h2 class="text-2xl font-serif font-bold text-white">ĐÁNH BẠI CHIẾN TRANH CỤC BỘ</h2>
+                    </div>
+                    <span class="text-xs bg-gold-500/20 text-gold-400 px-3 py-1 rounded-full border border-gold-500/30">1965 – 1968</span>
+                </div>
+
+                <div class="bg-navy-800 p-4 rounded-xl border border-crimson-800/60 text-xs text-slate-200 leading-relaxed">
+                    <span class="font-bold text-gold-400">Bản chất "Chiến tranh cục bộ":</span> Tiến hành bằng lực lượng <strong class="text-amber-200">Quân Mĩ, quân đồng minh của Mĩ và Quân đội Sài Gòn</strong>. Mĩ ồ ạt đưa quân chiến đấu vào miền Nam và mở cuộc chiến tranh phá hoại bằng không quân, hải quân ra miền Bắc.
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                    <div class="bg-navy-950 p-4 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-1">VẠN TƯỜNG (18/8/1965)</h4>
+                        <p class="text-slate-300">Được coi là "Ấp Bắc" đối với quân Mĩ; mở đầu khả năng đánh thắng Mĩ trong chiến lược Chiến tranh cục bộ.</p>
+                    </div>
+
+                    <div class="bg-navy-950 p-4 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-1">HAI MÙA KHÔ (1965–1967)</h4>
+                        <p class="text-slate-300">Đập tan các cuộc phản công chiến lược "Tìm diệt" và "Bình định" của Mĩ – Ngụy.</p>
+                    </div>
+
+                    <div class="bg-navy-950 p-4 rounded-xl border border-slate-700">
+                        <h4 class="font-bold text-amber-400 mb-1">XUÂN MẬU THÂN 1968</h4>
+                        <p class="text-slate-300">Tổng tiến công và nổi dậy đồng loạt ở hầu khắp các đô thị, buộc Mĩ phải xuống thang chiến tranh, chấp nhận đàm phán ở Pa-ri.</p>
+                    </div>
+                </div>
+
+                <!-- TRÒ CHƠI ĐÚNG / SAI -->
+                <div class="bg-navy-950 p-4 rounded-xl border border-gold-500/30 space-y-3">
+                    <h4 class="font-bold text-gold-400 text-sm"><i class="fa-solid fa-circle-check mr-1"></i> TRÒ CHƠI "ĐÚNG HAY SAI?"</h4>
+                    <div class="space-y-2 text-xs">
+                        <div class="flex items-center justify-between bg-navy-800 p-2.5 rounded border border-slate-700">
+                            <span class="text-slate-200">1. Chiến tranh cục bộ được tiến hành bằng quân Mĩ, đồng minh Mĩ và quân Sài Gòn.</span>
+                            <div class="space-x-1 shrink-0">
+                                <button onclick="checkTF(1, true, true)" class="px-2 py-1 bg-emerald-800 rounded text-white font-bold">ĐÚNG</button>
+                                <button onclick="checkTF(1, false, true)" class="px-2 py-1 bg-slate-700 rounded text-slate-300">SAI</button>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between bg-navy-800 p-2.5 rounded border border-slate-700">
+                            <span class="text-slate-200">2. Xuân Mậu Thân 1968 diễn ra trọng tâm ở các vùng nông thôn đồng bằng.</span>
+                            <div class="space-x-1 shrink-0">
+                                <button onclick="checkTF(2, true, false)" class="px-2 py-1 bg-slate-700 rounded text-slate-300">ĐÚNG</button>
+                                <button onclick="checkTF(2, false, false)" class="px-2 py-1 bg-emerald-800 rounded text-white font-bold">SAI</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tf-feedback" class="text-xs font-semibold text-amber-300 hidden"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 9: CHẶNG 4 (1969 - 1973) ================= -->
+        <div id="page-9" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="border-b border-slate-700 pb-3 flex justify-between items-center">
+                    <div>
+                        <span class="text-gold-400 text-xs uppercase font-bold">Chặng 4 (1969 – 1973)</span>
+                        <h2 class="text-2xl font-serif font-bold text-white">ĐÁNH BẠI VIỆT NAM HÓA CHIẾN TRANH</h2>
+                    </div>
+                    <span class="text-xs bg-gold-500/20 text-gold-400 px-3 py-1 rounded-full border border-gold-500/30">1969 – 1973</span>
+                </div>
+
+                <div class="bg-navy-800 p-4 rounded-xl border border-slate-700 text-xs space-y-2">
+                    <p class="text-slate-200">
+                        <strong class="text-gold-400">Đặc điểm:</strong> Thực hiện công thức <span class="text-amber-200">"Quân đội Sài Gòn + hỏa lực, không quân, hậu cần Mĩ"</span> do cố vấn Mĩ chỉ huy, mở rộng chiến tranh ra toàn Đông Dương.
+                    </p>
+                </div>
+
+                <!-- Timeline sự kiện -->
+                <div class="space-y-2 text-xs">
+                    <div class="bg-navy-950 p-3 rounded-lg border-l-4 border-gold-500 flex justify-between items-center">
+                        <div>
+                            <span class="font-bold text-gold-400">6/6/1969:</span> Chính phủ Cách mạng lâm thời Cộng hòa miền Nam VN ra đời.
+                        </div>
+                    </div>
+                    <div class="bg-navy-950 p-3 rounded-lg border-l-4 border-amber-500 flex justify-between items-center">
+                        <div>
+                            <span class="font-bold text-amber-400">1970 – 1971:</span> Đập tan cuộc hành quân sang Campuchia & Chiến dịch Đường 9 – Nam Lào.
+                        </div>
+                    </div>
+                    <div class="bg-navy-950 p-3 rounded-lg border-l-4 border-emerald-500 flex justify-between items-center">
+                        <div>
+                            <span class="font-bold text-emerald-400">1972:</span> Tiến công chiến lược trên chiến trường Miền Nam.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Màn hình Điện Biên Phủ trên không & Hiệp định Pari -->
+                <div class="bg-gradient-to-r from-crimson-950 via-navy-900 to-navy-950 p-5 rounded-xl border border-gold-500/40 text-center space-y-3">
+                    <div class="inline-block p-3 rounded-full bg-crimson-900/80 border border-gold-400 text-gold-400 text-2xl animate-bounce">
+                        <i class="fa-solid fa-jet-fighter"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-gold-400 uppercase">“ĐIỆN BIÊN PHỦ TRÊN KHÔNG” (18 – 29/12/1972)</h3>
+                    <p class="text-xs text-slate-200 max-w-2xl mx-auto leading-relaxed">
+                        Quân dân miền Bắc đánh bại cuộc tập kích chiến lược bằng máy bay B-52 của Mĩ trong 12 ngày đêm tại Hà Nội, Hải Phòng. Buộc Mĩ phải ký <strong class="text-amber-300">Hiệp định Pa-ri (27/1/1973)</strong>, rút toàn bộ quân Mĩ và quân đồng minh về nước.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 10: CHẶNG 5 (1973 - 1975) ================= -->
+        <div id="page-10" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="border-b border-slate-700 pb-3 flex justify-between items-center">
+                    <div>
+                        <span class="text-gold-400 text-xs uppercase font-bold">Chặng 5 (1973 – 1975)</span>
+                        <h2 class="text-2xl font-serif font-bold text-white">MÙA XUÂN TOÀN THẮNG 1975</h2>
+                    </div>
+                    <span class="text-xs bg-gold-500/20 text-gold-400 px-3 py-1 rounded-full border border-gold-500/30">1973 – 1975</span>
+                </div>
+
+                <!-- Timeline 3 chiến dịch lớn -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-navy-800 p-4 rounded-xl border border-gold-500/40 relative">
+                        <div class="text-gold-400 font-bold text-sm mb-1">1. CHIẾN DỊCH TÂY NGUYÊN</div>
+                        <span class="text-[10px] text-amber-300 font-mono block mb-2">(4/3 – 24/3/1975)</span>
+                        <p class="text-slate-300">Đột phá Buôn Ma Thuột; chuyển cuộc kháng chiến từ tiến công chiến lược sang tổng tiến công chiến lược trên toàn miền Nam.</p>
+                    </div>
+
+                    <div class="bg-navy-800 p-4 rounded-xl border border-gold-500/40 relative">
+                        <div class="text-gold-400 font-bold text-sm mb-1">2. CHIẾN DỊCH HUẾ – ĐÀ NẴNG</div>
+                        <span class="text-[10px] text-amber-300 font-mono block mb-2">(21/3 – 29/3/1975)</span>
+                        <p class="text-slate-300">Giải phóng Cố đô Huế (26/3) và TP Đà Nẵng (29/3), đập tan căn cứ quân sự liên hợp lớn nhất của địch.</p>
+                    </div>
+
+                    <div class="bg-navy-800 p-4 rounded-xl border border-gold-500/40 relative">
+                        <div class="text-gold-400 font-bold text-sm mb-1">3. CHIẾN DỊCH HỒ CHÍ MINH</div>
+                        <span class="text-[10px] text-amber-300 font-mono block mb-2">(26/4 – 30/4/1975)</span>
+                        <p class="text-slate-300">Lúc 11g30 ngày 30/4/1975, lá cờ giải phóng tung bay trên nóc Dinh Độc Lập. Miền Nam hoàn toàn giải phóng.</p>
+                    </div>
+                </div>
+
+                <div class="bg-crimson-900/70 p-4 rounded-xl border border-gold-500/50 text-center text-amber-100 text-xs font-serif italic">
+                    “Năm tháng sẽ trôi qua, nhưng thắng lợi của nhân dân ta trong sự nghiệp kháng chiến chống Mĩ, cứu nước mãi mãi được ghi vào lịch sử dân tộc ta như một trong những trang chói lọi nhất...”
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 11: TRÒ CHƠI XẾP ĐÚNG TRÌNH TỰ ================= -->
+        <div id="page-11" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="text-center">
+                    <span class="text-gold-400 text-xs uppercase font-bold">Thử thách tương tác</span>
+                    <h2 class="text-2xl font-serif font-bold text-white mt-1">TRÒ CHƠI "XẾP ĐÚNG TRÌNH TỰ SỰ KIỆN 1975"</h2>
+                    <p class="text-xs text-slate-300 mt-1">Sắp xếp các bước phát triển của Tổng tiến công và nổi dậy Xuân 1975 theo đúng thứ tự thời gian:</p>
+                </div>
+
+                <div id="seq-container" class="space-y-2 max-w-xl mx-auto text-xs">
+                    <!-- Dynamic rendering via JS -->
+                </div>
+
+                <div class="text-center pt-2">
+                    <button onclick="checkSequenceGame()" class="px-6 py-2.5 bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-xs rounded-lg transition shadow">
+                        Kiểm tra thứ tự
+                    </button>
+                    <div id="seq-feedback" class="mt-3 text-xs font-semibold"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 12: BẢNG TỔNG HỢP 5 CHẶNG ĐƯỜNG ================= -->
+        <div id="page-12" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="text-center">
+                    <span class="text-gold-400 text-xs uppercase font-bold">Tổng hợp kiến thức</span>
+                    <h2 class="text-2xl font-serif font-bold text-white mt-1">5 CHẶNG ĐƯỜNG – 1 HÀNH TRÌNH</h2>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs border-collapse">
+                        <thead>
+                            <tr class="bg-navy-800 text-gold-400 border-b border-slate-700">
+                                <th class="p-3">Giai đoạn</th>
+                                <th class="p-3">Nội dung cốt lõi & Chiến lược</th>
+                                <th class="p-3">Thắng lợi tiêu biểu</th>
+                                <th class="p-3 text-center">Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800 text-slate-300">
+                            <tr>
+                                <td class="p-3 font-bold text-amber-200">1954 – 1960</td>
+                                <td class="p-3">Giữ gìn lực lượng → Chuyển sang tiến công</td>
+                                <td class="p-3">Phong trào Đồng khởi (1960)</td>
+                                <td class="p-3 text-center"><button onclick="goToPage(6)" class="px-2 py-1 bg-slate-800 hover:bg-gold-500 hover:text-navy-950 rounded text-[10px] transition">Khám phá</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-amber-200">1961 – 1965</td>
+                                <td class="p-3">Đánh bại "Chiến tranh đặc biệt"</td>
+                                <td class="p-3">Ấp Bắc, Bình Giã, Đồng Xoài</td>
+                                <td class="p-3 text-center"><button onclick="goToPage(7)" class="px-2 py-1 bg-slate-800 hover:bg-gold-500 hover:text-navy-950 rounded text-[10px] transition">Khám phá</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-amber-200">1965 – 1968</td>
+                                <td class="p-3">Đánh bại "Chiến tranh cục bộ"</td>
+                                <td class="p-3">Vạn Tường, Xuân Mậu Thân 1968</td>
+                                <td class="p-3 text-center"><button onclick="goToPage(8)" class="px-2 py-1 bg-slate-800 hover:bg-gold-500 hover:text-navy-950 rounded text-[10px] transition">Khám phá</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-amber-200">1969 – 1973</td>
+                                <td class="p-3">Đánh bại "Việt Nam hóa chiến tranh"</td>
+                                <td class="p-3">Điện Biên Phủ trên không, Paris 1973</td>
+                                <td class="p-3 text-center"><button onclick="goToPage(9)" class="px-2 py-1 bg-slate-800 hover:bg-gold-500 hover:text-navy-950 rounded text-[10px] transition">Khám phá</button></td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-bold text-amber-200">1973 – 1975</td>
+                                <td class="p-3">Tổng tiến công và nổi dậy Xuân 1975</td>
+                                <td class="p-3">Tây Nguyên, Huế-Đà Nẵng, HCM</td>
+                                <td class="p-3 text-center"><button onclick="goToPage(10)" class="px-2 py-1 bg-slate-800 hover:bg-gold-500 hover:text-navy-950 rounded text-[10px] transition">Khám phá</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 13: NGUYÊN NHÂN THẮNG LỢI ================= -->
+        <div id="page-13" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="text-center">
+                    <span class="text-gold-400 text-xs uppercase font-bold">Tổng kết lịch sử</span>
+                    <h2 class="text-2xl font-serif font-bold text-white mt-1">VÌ SAO CUỘC KHÁNG CHIẾN THẮNG LỢI?</h2>
+                    <p class="text-xs text-slate-300 mt-1">Bấm vào từng mảnh ghép để mở khóa nguyên nhân thắng lợi:</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    <div onclick="toggleCard(this)" class="card-flip cursor-pointer h-32">
+                        <div class="card-flip-inner w-full h-full relative rounded-xl border border-gold-500/30">
+                            <div class="card-front absolute inset-0 bg-navy-800 p-4 flex flex-col items-center justify-center text-center">
+                                <i class="fa-solid fa-flag text-gold-400 text-2xl mb-2"></i>
+                                <span class="text-xs font-bold text-slate-200">Mảnh ghép 1</span>
+                            </div>
+                            <div class="card-back absolute inset-0 bg-crimson-950 p-3 flex items-center text-center text-xs text-amber-100 font-medium">
+                                Sự lãnh đạo sáng suốt của Đảng, đứng đầu là Chủ tịch Hồ Chí Minh.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div onclick="toggleCard(this)" class="card-flip cursor-pointer h-32">
+                        <div class="card-flip-inner w-full h-full relative rounded-xl border border-gold-500/30">
+                            <div class="card-front absolute inset-0 bg-navy-800 p-4 flex flex-col items-center justify-center text-center">
+                                <i class="fa-solid fa-compass text-gold-400 text-2xl mb-2"></i>
+                                <span class="text-xs font-bold text-slate-200">Mảnh ghép 2</span>
+                            </div>
+                            <div class="card-back absolute inset-0 bg-crimson-950 p-3 flex items-center text-center text-xs text-amber-100 font-medium">
+                                Đường lối chính trị, quân sự độc lập, tự chủ, đúng đắn, sáng tạo.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div onclick="toggleCard(this)" class="card-flip cursor-pointer h-32">
+                        <div class="card-flip-inner w-full h-full relative rounded-xl border border-gold-500/30">
+                            <div class="card-front absolute inset-0 bg-navy-800 p-4 flex flex-col items-center justify-center text-center">
+                                <i class="fa-solid fa-users text-gold-400 text-2xl mb-2"></i>
+                                <span class="text-xs font-bold text-slate-200">Mảnh ghép 3</span>
+                            </div>
+                            <div class="card-back absolute inset-0 bg-crimson-950 p-3 flex items-center text-center text-xs text-amber-100 font-medium">
+                                Nhân dân Việt Nam giàu lòng yêu nước, đoàn kết, chiến đấu dũng cảm.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div onclick="toggleCard(this)" class="card-flip cursor-pointer h-32">
+                        <div class="card-flip-inner w-full h-full relative rounded-xl border border-gold-500/30">
+                            <div class="card-front absolute inset-0 bg-navy-800 p-4 flex flex-col items-center justify-center text-center">
+                                <i class="fa-solid fa-warehouse text-gold-400 text-2xl mb-2"></i>
+                                <span class="text-xs font-bold text-slate-200">Mảnh ghép 4</span>
+                            </div>
+                            <div class="card-back absolute inset-0 bg-crimson-950 p-3 flex items-center text-center text-xs text-amber-100 font-medium">
+                                Hậu phương miền Bắc không ngừng lớn mạnh, chi viện kịp thời.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div onclick="toggleCard(this)" class="card-flip cursor-pointer h-32">
+                        <div class="card-flip-inner w-full h-full relative rounded-xl border border-gold-500/30">
+                            <div class="card-front absolute inset-0 bg-navy-800 p-4 flex flex-col items-center justify-center text-center">
+                                <i class="fa-solid fa-handshake text-gold-400 text-2xl mb-2"></i>
+                                <span class="text-xs font-bold text-slate-200">Mảnh ghép 5</span>
+                            </div>
+                            <div class="card-back absolute inset-0 bg-crimson-950 p-3 flex items-center text-center text-xs text-amber-100 font-medium">
+                                Liên minh chiến đấu của nhân dân 3 nước Đông Dương (Việt Nam - Lào - Campuchia).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div onclick="toggleCard(this)" class="card-flip cursor-pointer h-32">
+                        <div class="card-flip-inner w-full h-full relative rounded-xl border border-gold-500/30">
+                            <div class="card-front absolute inset-0 bg-navy-800 p-4 flex flex-col items-center justify-center text-center">
+                                <i class="fa-solid fa-globe text-gold-400 text-2xl mb-2"></i>
+                                <span class="text-xs font-bold text-slate-200">Mảnh ghép 6</span>
+                            </div>
+                            <div class="card-back absolute inset-0 bg-crimson-950 p-3 flex items-center text-center text-xs text-amber-100 font-medium">
+                                Sự ủng hộ, giúp đỡ to lớn của các nước XHCN và nhân dân tiến bộ thế giới.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 14: Ý NGHĨA LỊCH SỬ ================= -->
+        <div id="page-14" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="text-center">
+                    <span class="text-gold-400 text-xs uppercase font-bold">Giá trị lịch sử</span>
+                    <h2 class="text-2xl font-serif font-bold text-white mt-1">Ý NGHĨA LỊCH SỬ CỦA THẮNG LỢI</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-navy-800 p-5 rounded-xl border border-emerald-500/40 space-y-3">
+                        <h3 class="font-bold text-emerald-400 text-sm flex items-center">
+                            <i class="fa-solid fa-flag-checkered mr-2"></i> ĐỐI VỚI VIỆT NAM
+                        </h3>
+                        <ul class="space-y-2 text-slate-300 list-disc list-inside leading-relaxed">
+                            <li>Kết thúc 21 năm kháng chiến chống Mĩ xâm lược và 30 năm chiến tranh giải phóng dân tộc.</li>
+                            <li>Chấm dứt vĩnh viễn ách thống trị của chủ nghĩa đế quốc trên đất nước ta.</li>
+                            <li>Hoàn thành cuộc cách mạng dân tộc dân chủ nhân dân trên phạm vi cả nước.</li>
+                            <li>Mở ra kỷ nguyên mới: Kỷ nguyên cả nước hòa bình, độc lập, thống nhất và đi lên CNXH.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-navy-800 p-5 rounded-xl border border-gold-500/40 space-y-3">
+                        <h3 class="font-bold text-gold-400 text-sm flex items-center">
+                            <i class="fa-solid fa-earth-americas mr-2"></i> ĐỐI VỚI QUỐC TẾ
+                        </h3>
+                        <ul class="space-y-2 text-slate-300 list-disc list-inside leading-relaxed">
+                            <li>Tác động mạnh đến nội tình nước Mĩ và cục diện thế giới.</li>
+                            <li>Góp phần làm sụp đổ chủ nghĩa thực dân mới.</li>
+                            <li>Cổ vũ mạnh mẽ phong trào giải phóng dân tộc, vì hòa bình, độc lập và tiến bộ xã hội trên thế giới.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 15: GÓC TƯ LIỆU LỊCH SỬ ================= -->
+        <div id="page-15" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="text-center">
+                    <span class="text-gold-400 text-xs uppercase font-bold">Tư liệu SGK</span>
+                    <h2 class="text-2xl font-serif font-bold text-white mt-1">GÓC TƯ LIỆU LỊCH SỬ</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700 space-y-2">
+                        <h4 class="font-bold text-gold-400">📜 MỆNH LỆNH CỦA ĐẠI TƯỚNG VÕ NGUYÊN GIÁP (7/4/1975)</h4>
+                        <p class="font-serif italic text-amber-100 bg-navy-950 p-3 rounded border border-slate-700">
+                            “Thần tốc, thần tốc hơn nữa, táo bạo, táo bạo hơn nữa, tranh thủ từng phút, từng giờ, xốc tới mặt trận, giải phóng miền Nam. Quyết chiến và toàn thắng!”
+                        </p>
+                        <p class="text-slate-300 text-[11px]">👉 <strong class="text-gold-400">Em rút ra điều gì?</strong> Mệnh lệnh thể hiện tinh thần quyết đoán, chớp thời cơ chiến lược để mở cuộc Tổng tiến công giải phóng hoàn toàn Miền Nam.</p>
+                    </div>
+
+                    <div class="bg-navy-800 p-4 rounded-xl border border-slate-700 space-y-2">
+                        <h4 class="font-bold text-gold-400">📜 BÁO CÁO CHÍNH TRỊ TẠI ĐẠI HỘI IV CỦA ĐẢNG (1976)</h4>
+                        <p class="font-serif italic text-amber-100 bg-navy-950 p-3 rounded border border-slate-700">
+                            “Thắng lợi của nhân dân ta... sẽ mãi mãi được ghi vào lịch sử dân tộc ta như một trong những trang chói lọi nhất... một sự kiện có tầm quan trọng quốc tế to lớn và có tính thời đại sâu sắc.”
+                        </p>
+                        <p class="text-slate-300 text-[11px]">👉 <strong class="text-gold-400">Em rút ra điều gì?</strong> Khẳng định vị thế vĩ đại của thắng lợi kháng chiến chống Mĩ cả về tầm vóc dân tộc và thời đại.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 16: MINI GAME GIẢI MÃ LỊCH SỬ ================= -->
+        <div id="page-16" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+                    <div>
+                        <span class="text-gold-400 text-xs uppercase font-bold">Trò chơi học tập</span>
+                        <h2 class="text-xl sm:text-2xl font-serif font-bold text-white">MINI GAME "GIẢI MÃ LỊCH SỬ"</h2>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xs text-slate-400">Điểm số:</span>
+                        <span id="game-score" class="text-xl font-bold text-gold-400 ml-1">0</span>
+                    </div>
+                </div>
+
+                <div id="mini-game-box" class="bg-navy-950 p-5 rounded-xl border border-gold-500/30 text-xs space-y-4">
+                    <!-- Dynamic Game Question loaded by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 17: THỬ THÁCH CUỐI BÀI ================= -->
+        <div id="page-17" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="text-center">
+                    <span class="text-gold-400 text-xs uppercase font-bold">Chinh phục bài học</span>
+                    <h2 class="text-2xl font-serif font-bold text-white mt-1">EM ĐÃ CHINH PHỤC HÀNH TRÌNH 1954–1975 CHƯA?</h2>
+                    <p class="text-xs text-slate-300 mt-1">Hoàn thành 5 nhiệm vụ cốt lõi để nhận huy hiệu danh dự:</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 text-xs">
+                    <button onclick="toggleTask(1)" id="task-btn-1" class="p-3 bg-navy-800 border border-slate-700 rounded-xl text-center space-y-1 hover:border-gold-400 transition">
+                        <i class="fa-solid fa-1 text-gold-400 text-lg block"></i>
+                        <span class="font-bold text-slate-200">Bối cảnh lịch sử</span>
+                    </button>
+                    <button onclick="toggleTask(2)" id="task-btn-2" class="p-3 bg-navy-800 border border-slate-700 rounded-xl text-center space-y-1 hover:border-gold-400 transition">
+                        <i class="fa-solid fa-2 text-gold-400 text-lg block"></i>
+                        <span class="font-bold text-slate-200">5 Giai đoạn</span>
+                    </button>
+                    <button onclick="toggleTask(3)" id="task-btn-3" class="p-3 bg-navy-800 border border-slate-700 rounded-xl text-center space-y-1 hover:border-gold-400 transition">
+                        <i class="fa-solid fa-3 text-gold-400 text-lg block"></i>
+                        <span class="font-bold text-slate-200">Chiến lược Mĩ</span>
+                    </button>
+                    <button onclick="toggleTask(4)" id="task-btn-4" class="p-3 bg-navy-800 border border-slate-700 rounded-xl text-center space-y-1 hover:border-gold-400 transition">
+                        <i class="fa-solid fa-4 text-gold-400 text-lg block"></i>
+                        <span class="font-bold text-slate-200">Nguyên nhân</span>
+                    </button>
+                    <button onclick="toggleTask(5)" id="task-btn-5" class="p-3 bg-navy-800 border border-slate-700 rounded-xl text-center space-y-1 hover:border-gold-400 transition">
+                        <i class="fa-solid fa-5 text-gold-400 text-lg block"></i>
+                        <span class="font-bold text-slate-200">Ý nghĩa lịch sử</span>
+                    </button>
+                </div>
+
+                <div id="badge-container" class="hidden text-center p-6 bg-crimson-950 rounded-xl border border-gold-500/50 space-y-2">
+                    <i class="fa-solid fa-trophy text-gold-400 text-4xl animate-bounce"></i>
+                    <h3 class="text-xl font-bold text-gold-400 font-serif">XIN CHÚC MỪNG!</h3>
+                    <p class="text-xs text-amber-100">Em đã đạt danh hiệu: <strong class="text-white underline">“HỌC SINH CHINH PHỤC BÀI 8 LỊCH SỬ 12”</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 18: LUYỆN TẬP ================= -->
+        <div id="page-18" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="flex justify-between items-center border-b border-slate-700 pb-3">
+                    <div>
+                        <span class="text-gold-400 text-xs uppercase font-bold">Luyện tập trắc nghiệm</span>
+                        <h2 class="text-2xl font-serif font-bold text-white">10 CÂU CỦNG CỐ KIẾN THỨC SGK</h2>
+                    </div>
+                    <button onclick="resetPractice()" class="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs rounded border border-slate-600">
+                        Làm lại
+                    </button>
+                </div>
+
+                <div id="practice-container" class="space-y-4 max-h-[420px] overflow-y-auto pr-2 text-xs">
+                    <!-- Loaded dynamically via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 19: VẬN DỤNG ================= -->
+        <div id="page-19" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="text-center">
+                    <span class="text-gold-400 text-xs uppercase font-bold">Vận dụng sáng tạo</span>
+                    <h2 class="text-2xl font-serif font-bold text-white mt-1">NHIỆM VỤ VẬN DỤNG</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-navy-800 p-5 rounded-xl border border-slate-700 space-y-3">
+                        <h3 class="font-bold text-gold-400 text-sm">NHIỆM VỤ 1 (DỰ ÁN TƯ LIỆU)</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            Sưu tầm tư liệu và xây dựng bài giới thiệu ngắn (poster, timeline hoặc thuyết trình) về một nhân vật hoặc sự kiện tiêu biểu cho chủ nghĩa anh hùng cách mạng trong kháng chiến chống Mĩ.
+                        </p>
+                    </div>
+
+                    <div class="bg-navy-800 p-5 rounded-xl border border-slate-700 space-y-3">
+                        <h3 class="font-bold text-gold-400 text-sm">NHIỆM VỤ 2 (ĐỀN ƠN ĐÁP NGHĨA)</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            Nêu những việc làm cụ thể em có thể thực hiện để thể hiện lòng biết ơn đối với thương binh, liệt sĩ, gia đình có công với cách mạng tại địa phương.
+                        </p>
+                        <textarea id="app-input" rows="3" class="w-full bg-navy-950 border border-slate-700 rounded p-2 text-slate-200 focus:outline-none focus:border-gold-500" placeholder="Nhập ý kiến/chia sẻ của em tại đây..."></textarea>
+                        <button onclick="saveApplication()" class="px-3 py-1.5 bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold rounded text-xs">Lưu câu trả lời</button>
+                        <div id="app-fb" class="text-emerald-400 font-semibold hidden">✔ Đã lưu thành công ý kiến của em!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 20: SƠ ĐỒ TƯ DUY ================= -->
+        <div id="page-20" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="text-center">
+                    <span class="text-gold-400 text-xs uppercase font-bold">Sơ đồ tư duy</span>
+                    <h2 class="text-2xl font-serif font-bold text-white mt-1">MINDMAP BÀI 8</h2>
+                </div>
+
+                <div class="bg-navy-950 p-6 rounded-xl border border-gold-500/30 text-center space-y-4">
+                    <div class="inline-block px-6 py-2 bg-crimson-900 text-gold-400 font-bold font-serif text-sm rounded-xl border border-gold-500">
+                        CUỘC KHÁNG CHIẾN CHỐNG MĨ, CỨU NƯỚC (1954 – 1975)
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs text-left">
+                        <div class="bg-navy-800 p-3 rounded-lg border-t-2 border-emerald-500">
+                            <h4 class="font-bold text-emerald-400 mb-1">1. BỐI CẢNH</h4>
+                            <p class="text-slate-300 text-[11px]">Đất nước chia làm 2 miền; Mĩ thay chân Pháp; Chiến tranh lạnh tác động.</p>
+                        </div>
+                        <div class="bg-navy-800 p-3 rounded-lg border-t-2 border-gold-500">
+                            <h4 class="font-bold text-gold-400 mb-1">2. 5 GIAI ĐOẠN</h4>
+                            <p class="text-slate-300 text-[11px]">Giữ lực lượng → ĐT Đặc biệt → ĐT Cục bộ → Việt Nam hóa → Xuân 1975.</p>
+                        </div>
+                        <div class="bg-navy-800 p-3 rounded-lg border-t-2 border-amber-500">
+                            <h4 class="font-bold text-amber-400 mb-1">3. NGUYÊN NHÂN</h4>
+                            <p class="text-slate-300 text-[11px]">Sự lãnh đạo của Đảng; Hậu phương Miền Bắc; Sự ủng hộ quốc tế.</p>
+                        </div>
+                        <div class="bg-navy-800 p-3 rounded-lg border-t-2 border-crimson-500">
+                            <h4 class="font-bold text-crimson-400 mb-1">4. Ý NGHĨA</h4>
+                            <p class="text-slate-300 text-[11px]">Chấm dứt 21 năm kháng chiến; Thống nhất đất nước; Tầm vóc quốc tế.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 21: EM NHỚ GÌ? ================= -->
+        <div id="page-21" class="page-slide">
+            <div class="bg-navy-900/90 border border-slate-700 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+                <div class="text-center">
+                    <span class="text-gold-400 text-xs uppercase font-bold">Ôn tập nhanh</span>
+                    <h2 class="text-2xl font-serif font-bold text-white mt-1">EM NHỚ GÌ?</h2>
+                </div>
+
+                <div class="space-y-3 max-w-2xl mx-auto text-xs">
+                    <div class="bg-navy-800 p-3.5 rounded-xl border border-slate-700">
+                        <p class="font-bold text-amber-200">1. Cuộc kháng chiến chống Mĩ diễn ra trong khoảng thời gian nào?</p>
+                        <p class="text-slate-300 mt-1">➡ Đáp án: Từ năm 1954 đến năm 1975 (21 năm).</p>
+                    </div>
+                    <div class="bg-navy-800 p-3.5 rounded-xl border border-slate-700">
+                        <p class="font-bold text-amber-200">2. Phong trào Đồng khởi bùng nổ mạnh mẽ nhất ở đâu?</p>
+                        <p class="text-slate-300 mt-1">➡ Đáp án: Bến Tre (1/1960).</p>
+                    </div>
+                    <div class="bg-navy-800 p-3.5 rounded-xl border border-slate-700">
+                        <p class="font-bold text-amber-200">3. Hiệp định Pa-ri về chấm dứt chiến tranh ở Việt Nam được ký năm nào?</p>
+                        <p class="text-slate-300 mt-1">➡ Đáp án: Ngày 27/1/1973.</p>
+                    </div>
+                    <div class="bg-navy-800 p-3.5 rounded-xl border border-slate-700">
+                        <p class="font-bold text-amber-200">4. Chiến dịch cuối cùng giải phóng hoàn toàn Miền Nam mang tên gì?</p>
+                        <p class="text-slate-300 mt-1">➡ Đáp án: Chiến dịch Hồ Chí Minh (26/4 – 30/4/1975).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 22: HOÀN THÀNH BÀI HỌC ================= -->
+        <div id="page-22" class="page-slide">
+            <div class="star-pattern rounded-2xl border-2 border-gold-500/50 p-8 sm:p-12 text-center shadow-2xl space-y-6">
+                <i class="fa-solid fa-award text-gold-400 text-6xl animate-pulse"></i>
+                <h2 class="text-3xl font-serif font-black text-gold-400">CHÚC MỪNG EM ĐÃ HOÀN THÀNH!</h2>
+                <p class="text-slate-200 text-sm max-w-xl mx-auto leading-relaxed">
+                    Em đã hoàn thành xuất sắc <strong>Hành trình Lịch sử 1954 – 1975 (Bài 8 - Lịch sử 12 Kết nối tri thức)</strong>. Hãy tiếp tục giữ vững lòng tự hào dân tộc và tinh thần học hỏi!
+                </p>
+                <div class="pt-4 flex flex-wrap justify-center gap-4">
+                    <button onclick="goToPage(1)" class="px-6 py-3 rounded-xl bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-sm shadow">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Học lại từ đầu
+                    </button>
+                    <button onclick="goToPage(18)" class="px-6 py-3 rounded-xl bg-crimson-800 hover:bg-crimson-700 text-amber-200 font-bold text-sm shadow">
+                        <i class="fa-solid fa-pen-to-square mr-1"></i> Luyện tập trắc nghiệm
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- BOTTOM NAVIGATION BAR -->
+    <footer class="bg-navy-900 border-t border-slate-800 py-3 px-4 sticky bottom-0 z-40">
+        <div class="max-w-6xl mx-auto flex items-center justify-between text-xs sm:text-sm">
+            <button onclick="prevPage()" id="btn-prev" class="px-4 py-2 rounded-lg bg-navy-800 hover:bg-slate-700 text-slate-200 font-semibold transition border border-slate-700 flex items-center space-x-1">
+                <i class="fa-solid fa-chevron-left"></i>
+                <span class="hidden sm:inline">Quay lại</span>
+            </button>
+
+            <div class="flex items-center space-x-2">
+                <span class="text-slate-400">Trang</span>
+                <span id="page-indicator" class="font-bold text-gold-400 font-mono">1 / 22</span>
+            </div>
+
+            <button onclick="nextPage()" id="btn-next" class="px-4 py-2 rounded-lg bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold transition flex items-center space-x-1 shadow">
+                <span class="hidden sm:inline">Tiếp tục</span>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- TABLE OF CONTENTS MODAL -->
+    <div id="toc-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-navy-900 border border-gold-500/40 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl">
+            <div class="p-4 border-b border-slate-800 flex justify-between items-center">
+                <h3 class="font-serif font-bold text-gold-400 text-lg"><i class="fa-solid fa-list mr-2"></i>MỤC LỤC BÀI HỌC</h3>
+                <button onclick="toggleTOC()" class="text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="toc-list" class="p-4 overflow-y-auto space-y-1.5 text-xs text-slate-200">
+                <!-- TOC list generated dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT APPLICATION LOGIC -->
+    <script>
+        // State variables
+        let currentPage = 1;
+        const totalPages = 22;
+        let audioEnabled = true;
+        let miniGameScore = 0;
+        let currentMiniGameIdx = 0;
+        let completedTasks = new Set();
+
+        const pageTitles = [
+            "Trang Bìa",
+            "Khởi Động - Em có nhận ra?",
+            "Mục Tiêu Bài Học",
+            "Bản Đồ Hành Trình 1954–1975",
+            "I. Bối Cảnh Lịch Sử",
+            "Chặng 1: 1954–1960 (Đồng Khởi)",
+            "Chặng 2: 1961–1965 (Chiến tranh đặc biệt)",
+            "Chặng 3: 1965–1968 (Chiến tranh cục bộ)",
+            "Chặng 4: 1969–1973 (Việt Nam hóa chiến tranh)",
+            "Chặng 5: 1973–1975 (Mùa xuân toàn thắng)",
+            "Trò Chơi: Xếp Đúng Trình Tự 1975",
+            "Bảng Tổng Hợp 5 Chặng Đường",
+            "Nguyên Nhân Thắng Lợi",
+            "Ý Nghĩa Lịch Sử",
+            "Góc Tư Liệu Lịch Sử",
+            "Mini Game: Giải Mã Lịch Sử",
+            "Thử Thách Cuối Bài",
+            "Luyện Tập Trắc Nghiệm (10 câu)",
+            "Vận Dụng Sáng Tạo",
+            "Sơ Đồ Tư Duy (Mindmap)",
+            "Em Nhớ Gì? (Ôn Tập Nhanh)",
+            "Hoàn Thành Bài Học"
+        ];
+
+        // Web Audio API Sound Synthesizer
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSound(type) {
+            if (!audioEnabled) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                if (type === 'click') {
+                    osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.05);
+                } else if (type === 'success') {
+                    osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
+                    osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.08); // E5
+                    gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.25);
+                } else if (type === 'wrong') {
+                    osc.frequency.setValueAtTime(200, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.15);
+                }
+            } catch (e) {}
+        }
+
+        function toggleAudio() {
+            audioEnabled = !audioEnabled;
+            const icon = document.getElementById('audio-icon');
+            icon.className = audioEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark text-red-400';
+            playSound('click');
+        }
+
+        // Navigation
+        function updatePageUI() {
+            document.querySelectorAll('.page-slide').forEach(el => el.classList.remove('active'));
+            const activePage = document.getElementById(`page-${currentPage}`);
+            if (activePage) activePage.classList.add('active');
+
+            document.getElementById('page-indicator').innerText = `${currentPage} / ${totalPages}`;
+            document.getElementById('header-title').innerText = pageTitles[currentPage - 1] || "";
+            document.getElementById('progress-bar').style.width = `${(currentPage / totalPages) * 100}%`;
+
+            // Button states
+            document.getElementById('btn-prev').style.visibility = currentPage === 1 ? 'hidden' : 'visible';
+            document.getElementById('btn-next').innerText = currentPage === totalPages ? 'Hoàn thành' : 'Tiếp tục';
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goToPage(page) {
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                playSound('click');
+                updatePageUI();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                goToPage(currentPage + 1);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                goToPage(currentPage - 1);
+            }
+        }
+
+        function toggleTOC() {
+            const modal = document.getElementById('toc-modal');
+            modal.classList.toggle('hidden');
+            playSound('click');
+        }
+
+        // Render TOC list
+        function initTOC() {
+            const list = document.getElementById('toc-list');
+            list.innerHTML = pageTitles.map((title, idx) => `
+                <button onclick="goToPage(${idx + 1}); toggleTOC();" class="w-full text-left p-2.5 rounded-lg hover:bg-navy-800 transition flex items-center justify-between border border-transparent hover:border-slate-700 ${currentPage === idx + 1 ? 'text-gold-400 font-bold bg-navy-800' : 'text-slate-300'}">
+                    <span>${idx + 1}. ${title}</span>
+                    <i class="fa-solid fa-angle-right text-[10px] text-slate-500"></i>
+                </button>
+            `).join('');
+        }
+
+        // Card flip handler
+        function toggleCard(cardEl) {
+            cardEl.classList.toggle('flipped');
+            playSound('click');
+        }
+
+        // Detail viewer helper
+        function showDetail(msg) {
+            document.getElementById('detail-box').innerText = msg;
+            playSound('click');
+        }
+
+        function alertFeedback(id, isCorrect, msg) {
+            const fb = document.getElementById(`fb-${id}`);
+            fb.classList.remove('hidden');
+            fb.innerText = msg;
+            fb.className = `mt-2 text-xs font-semibold ${isCorrect ? 'text-emerald-400' : 'text-rose-400'}`;
+            playSound(isCorrect ? 'success' : 'wrong');
+        }
+
+        // Warmup Game
+        function checkWarmupAnswer(isCorrect) {
+            const fb = document.getElementById('warmup-feedback');
+            fb.classList.remove('hidden');
+            if (isCorrect) {
+                fb.className = "p-3 rounded-lg text-xs font-semibold bg-emerald-950 border border-emerald-500/40 text-emerald-300";
+                fb.innerText = "Chính xác! Hãy bắt đầu hành trình tìm hiểu cuộc kháng chiến chống Mĩ, cứu nước (1954 – 1975).";
+                playSound('success');
+            } else {
+                fb.className = "p-3 rounded-lg text-xs font-semibold bg-rose-950 border border-rose-500/40 text-rose-300";
+                fb.innerText = "Chưa chính xác. Hãy chọn phương án A nhé!";
+                playSound('wrong');
+            }
+        }
+
+        // Dong Khoi Game
+        function checkDongKhoiGame() {
+            const a1 = document.getElementById('dk-1').value;
+            const a2 = document.getElementById('dk-2').value;
+            const a3 = document.getElementById('dk-3').value;
+            const a4 = document.getElementById('dk-4').value;
+
+            const res = document.getElementById('dk-res');
+            if (a1 === '2/1959' && a2 === '8/1959' && a3 === '1/1960' && a4 === '20/12/1960') {
+                res.innerText = "✔ Chính xác! Em đã xác định đúng vị trí tất cả các sự kiện.";
+                res.className = "text-xs font-semibold text-emerald-400";
+                playSound('success');
+            } else {
+                res.innerText = "❌ Chưa đúng. Hãy xem lại các mốc thời gian!";
+                res.className = "text-xs font-semibold text-rose-400";
+                playSound('wrong');
+            }
+        }
+
+        // True False Game
+        function checkTF(q, choice, correctVal) {
+            const fb = document.getElementById('tf-feedback');
+            fb.classList.remove('hidden');
+            if (choice === correctVal) {
+                fb.innerText = `Câu ${q}: Chính xác!`;
+                fb.className = "text-xs font-semibold text-emerald-400";
+                playSound('success');
+            } else {
+                fb.innerText = `Câu ${q}: Chưa đúng, hãy chọn lại!`;
+                fb.className = "text-xs font-semibold text-rose-400";
+                playSound('wrong');
+            }
+        }
+
+        // Sequence Game 1975
+        const sequenceItems = [
+            { id: 1, title: "Chiến dịch Tây Nguyên", date: "4/3 - 24/3/1975" },
+            { id: 2, title: "Giải phóng Cố đô Huế", date: "26/3/1975" },
+            { id: 3, title: "Giải phóng TP Đà Nẵng", date: "29/3/1975" },
+            { id: 4, title: "Chiến dịch Hồ Chí Minh bắt đầu", date: "26/4/1975" },
+            { id: 5, title: "Lá cờ cắm trên Dinh Độc Lập - Giải phóng Sài Gòn", date: "30/4/1975" }
+        ];
+        let currentSequence = [2, 1, 4, 3, 5]; // initial shuffled state
+
+        function renderSequence() {
+            const container = document.getElementById('seq-container');
+            container.innerHTML = currentSequence.map((id, index) => {
+                const item = sequenceItems.find(s => s.id === id);
+                return `
+                    <div class="bg-navy-800 p-3 rounded-lg border border-slate-700 flex items-center justify-between">
+                        <span class="font-bold text-amber-200">${index + 1}. ${item.title}</span>
+                        <div class="space-x-1">
+                            <button onclick="moveSeq(${index}, -1)" class="px-2 py-1 bg-navy-900 text-slate-300 rounded border border-slate-700">▲</button>
+                            <button onclick="moveSeq(${index}, 1)" class="px-2 py-1 bg-navy-900 text-slate-300 rounded border border-slate-700">▼</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function moveSeq(idx, dir) {
+            const newIdx = idx + dir;
+            if (newIdx >= 0 && newIdx < currentSequence.length) {
+                const temp = currentSequence[idx];
+                currentSequence[idx] = currentSequence[newIdx];
+                currentSequence[newIdx] = temp;
+                renderSequence();
+                playSound('click');
+            }
+        }
+
+        function checkSequenceGame() {
+            const isCorrect = currentSequence.every((val, i) => val === i + 1);
+            const fb = document.getElementById('seq-feedback');
+            if (isCorrect) {
+                fb.innerText = "✔ Hoàn hảo! Em đã sắp xếp đúng trình tự lịch sử Xuân 1975.";
+                fb.className = "text-xs font-semibold text-emerald-400";
+                playSound('success');
+            } else {
+                fb.innerText = "❌ Thứ tự chưa chính xác. Hãy sắp xếp lại theo thời gian!";
+                fb.className = "text-xs font-semibold text-rose-400";
+                playSound('wrong');
+            }
+        }
+
+        // Mini game data
+        const miniGameQuestions = [
+            {
+                q: "Chiến lược 'Chiến tranh đặc biệt' (1961 - 1965) dựa vào xương sống là gì?",
+                options: ["A. Ấp chiến lược", "B. Vạn Tường", "C. Máy bay B-52", "D. Mở rộng ra Lào"],
+                correct: 0,
+                explain: "Ấp chiến lược được Mĩ - Ngụy coi là 'xương sống' của Chiến tranh đặc biệt."
+            },
+            {
+                q: "Sự kiện nào buộc Mĩ phải tuyên bố 'Phi Mĩ hóa' chiến tranh xâm lược?",
+                options: ["A. Đồng khởi 1960", "B. Vạn Tường 1965", "C. Mậu Thân 1968", "D. Điện Biên Phủ trên không"],
+                correct: 2,
+                explain: "Cuộc Tổng tiến công và nổi dậy Xuân Mậu Thân 1968 buộc Mĩ thừa nhận thất bại của Chiến tranh cục bộ."
+            },
+            {
+                q: "Chiến thắng 'Điện Biên Phủ trên không' diễn ra trong bao nhiêu ngày đêm?",
+                options: ["A. 10 ngày đêm", "B. 12 ngày đêm", "C. 15 ngày đêm", "D. 81 ngày đêm"],
+                correct: 1,
+                explain: "Trận tập kích chiến lược B-52 diễn ra trong 12 ngày đêm cuối năm 1972."
+            }
+        ];
+
+        function renderMiniGame() {
+            const q = miniGameQuestions[currentMiniGameIdx];
+            const box = document.getElementById('mini-game-box');
+            box.innerHTML = `
+                <p class="font-bold text-amber-200 text-sm">Câu ${currentMiniGameIdx + 1}: ${q.q}</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-2">
+                    ${q.options.map((opt, i) => `
+                        <button onclick="answerMiniGame(${i})" class="p-2.5 bg-navy-800 hover:bg-slate-700 text-left rounded border border-slate-700 text-slate-200">
+                            ${opt}
+                        </button>
+                    `).join('')}
+                </div>
+                <div id="mg-fb" class="mt-2 text-xs font-semibold hidden"></div>
+            `;
+        }
+
+        function answerMiniGame(ans) {
+            const q = miniGameQuestions[currentMiniGameIdx];
+            const fb = document.getElementById('mg-fb');
+            fb.classList.remove('hidden');
+
+            if (ans === q.correct) {
+                miniGameScore += 10;
+                document.getElementById('game-score').innerText = miniGameScore;
+                fb.innerText = `✔ Đúng! ${q.explain}`;
+                fb.className = "text-xs font-semibold text-emerald-400";
+                playSound('success');
+            } else {
+                fb.innerText = `❌ Chưa đúng! ${q.explain}`;
+                fb.className = "text-xs font-semibold text-rose-400";
+                playSound('wrong');
+            }
+
+            setTimeout(() => {
+                if (currentMiniGameIdx < miniGameQuestions.length - 1) {
+                    currentMiniGameIdx++;
+                    renderMiniGame();
+                }
+            }, 2000);
+        }
+
+        // Task badge logic
+        function toggleTask(id) {
+            completedTasks.add(id);
+            const btn = document.getElementById(`task-btn-${id}`);
+            btn.className = "p-3 bg-emerald-900/60 border border-emerald-500 rounded-xl text-center space-y-1";
+            playSound('success');
+
+            if (completedTasks.size === 5) {
+                document.getElementById('badge-container').classList.remove('hidden');
+            }
+        }
+
+        // Practice Quizzes Data
+        const practiceData = [
+            {
+                q: "1. Thắng lợi nào chuyển cách mạng miền Nam từ thế giữ gìn lực lượng sang thế tiến công?",
+                a: ["A. Phong trào Đồng khởi (1960)", "B. Chiến thắng Ấp Bắc (1963)", "C. Chiến thắng Vạn Tường (1965)", "D. Chiến dịch Hồ Chí Minh (1975)"],
+                c: 0,
+                exp: "Đồng khởi (1960) giáng đòn nặng nề vào chính sách thực dân mới, chuyển cách mạng miền Nam sang thế tiến công."
+            },
+            {
+                q: "2. Hiệp định Pa-ri năm 1973 quy định Mĩ phải làm gì đối với Việt Nam?",
+                a: ["A. Tăng viện trợ quân sự", "B. Tự do lập căn cứ quân sự", "C. Rút hết quân Mĩ và quân đồng minh về nước", "D. Giữ quân đội ở miền Nam"],
+                c: 2,
+                exp: "Hiệp định Paris quy định Mĩ phải tôn trọng độc lập, chủ quyền và rút hết quân về nước."
+            },
+            {
+                q: "3. Điểm giống nhau giữa các chiến lược chiến tranh của Mĩ ở Miền Nam (1961–1973) là gì?",
+                a: ["A. Đều do quân Mĩ trực tiếp tác chiến", "B. Đều là chiến tranh xâm lược thực dân mới", "C. Đều dùng B-52 tập kích miền Bắc", "D. Đều mở rộng ra toàn Đông Dương"],
+                c: 1,
+                exp: "Tất cả các chiến lược chiến tranh của Mĩ tại Việt Nam đều nhằm biến miền Nam thành thuộc địa kiểu mới."
+            }
+        ];
+
+        function renderPractice() {
+            const container = document.getElementById('practice-container');
+            container.innerHTML = practiceData.map((item, qIdx) => `
+                <div class="bg-navy-800 p-4 rounded-xl border border-slate-700 space-y-2">
+                    <p class="font-bold text-amber-200">${item.q}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        ${item.a.map((opt, aIdx) => `
+                            <button onclick="checkPractice(${qIdx}, ${aIdx})" id="p-btn-${qIdx}-${aIdx}" class="p-2 bg-navy-900 hover:bg-slate-700 rounded border border-slate-700 text-left text-slate-200">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="p-exp-${qIdx}" class="hidden p-2 rounded bg-navy-950 text-emerald-400 font-semibold"></div>
+                </div>
+            `).join('');
+        }
+
+        function checkPractice(qIdx, aIdx) {
+            const item = practiceData[qIdx];
+            const expBox = document.getElementById(`p-exp-${qIdx}`);
+            expBox.classList.remove('hidden');
+
+            if (aIdx === item.c) {
+                expBox.className = "p-2 rounded bg-emerald-950 text-emerald-300 border border-emerald-500/30";
+                expBox.innerText = `✔ Chính xác! ${item.exp}`;
+                playSound('success');
+            } else {
+                expBox.className = "p-2 rounded bg-rose-950 text-rose-300 border border-rose-500/30";
+                expBox.innerText = `❌ Chưa đúng! ${item.exp}`;
+                playSound('wrong');
+            }
+        }
+
+        function resetPractice() {
+            renderPractice();
+            playSound('click');
+        }
+
+        function saveApplication() {
+            const val = document.getElementById('app-input').value.trim();
+            if (val) {
+                document.getElementById('app-fb').classList.remove('hidden');
+                playSound('success');
+            }
+        }
+
+        // Initialize App
+        window.onload = function() {
+            initTOC();
+            updatePageUI();
+            renderSequence();
+            renderMiniGame();
+            renderPractice();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chủ đề 3: Cách mạng tháng Tám & Bảo vệ Tổ quốc - Lịch sử 12</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'crimson': {
+                            50: '#fef2f2',
+                            100: '#ffe1e1',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        },
+                        'amber-gold': {
+                            400: '#fbbf24',
+                            50: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased font-sans leading-relaxed selection:bg-crimson-100 selection:text-crimson-800">
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-crimson-800 text-amber-gold-400 font-bold text-lg shadow">
+                        12
+                    </span>
+                    <div>
+                        <a href="index.html" class="font-bold text-slate-900 text-base sm:text-lg block leading-tight">CỔNG HỌC TẬP LỊCH SỬ 12</a>
+                        <span class="text-xs text-slate-500 font-medium">Bộ sách Kết nối tri thức với cuộc sống</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex items-center space-x-1 text-xs font-semibold uppercase tracking-wider text-slate-700">
+                    <a href="#danh-sach-bai" class="px-3 py-2 rounded-md hover:bg-slate-100 hover:text-crimson-800 transition">4 Bài học</a>
+                    <a href="#truc-thoi-gian" class="px-3 py-2 rounded-md hover:bg-slate-100 hover:text-crimson-800 transition">Trục thời gian</a>
+                    <a href="#trac-nghiem-tong-hop" class="px-3 py-2 rounded-md hover:bg-slate-100 hover:text-crimson-800 transition">Luyện tập chung</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-1 text-sm font-medium">
+            <a href="#danh-sach-bai" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md hover:bg-slate-100">Danh sách 4 Bài học</a>
+            <a href="#truc-thoi-gian" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md hover:bg-slate-100">Trục thời gian 1945 - Nay</a>
+            <a href="#trac-nghiem-tong-hop" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md hover:bg-slate-100">Luyện tập trắc nghiệm chung</a>
+        </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="relative bg-gradient-to-b from-crimson-900 via-crimson-800 to-slate-900 text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-b-4 border-amber-gold-500">
+        <div class="max-w-5xl mx-auto text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-amber-gold-500/20 text-amber-gold-400 font-semibold text-xs sm:text-sm tracking-wider uppercase mb-4 border border-amber-gold-500/30">
+                LỊCH SỬ 12 – BỘ SÁCH KẾT NỐI TRI THỨC VỚI CUỘC SỐNG
+            </span>
+            <div class="text-amber-gold-400 font-black text-xl sm:text-2xl tracking-wide uppercase mb-2">CHỦ ĐỀ 3</div>
+            <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight mb-6 leading-tight">
+                CÁCH MẠNG THÁNG TÁM NĂM 1945,<br/>
+                <span class="text-amber-gold-400">CHIẾN TRANH GIẢI PHÓNG DÂN TỘC VÀ CHIẾN TRANH BẢO VỆ TỔ QUỐC</span><br/>
+                TRONG LỊCH SỬ VIỆT NAM (TỪ 8-1945 ĐẾN NAY)
+            </h1>
+            <p class="max-w-3xl mx-auto text-slate-200 text-sm sm:text-base mb-8 font-normal leading-relaxed">
+                Trung tâm kết nối 4 bài học trọng tâm: Bài 6 (Cách mạng tháng Tám 1945), Bài 7 (Kháng chiến chống Pháp 1945-1954), Bài 8 (Kháng chiến chống Mỹ 1954-1975) và Bài 9 (Bảo vệ Tổ quốc từ 1975 đến nay).
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#danh-sach-bai" class="inline-flex items-center space-x-2 px-6 py-3 bg-amber-gold-500 hover:bg-amber-gold-600 text-slate-950 font-bold rounded-xl shadow-lg hover:shadow-xl transition transform active:scale-95 text-sm sm:text-base">
+                    <span>KHÁM PHÁ 4 BÀI HỌC</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                    </svg>
+                </a>
+                <a href="#trac-nghiem-tong-hop" class="inline-flex items-center space-x-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl border border-white/20 transition text-sm sm:text-base">
+                    <span>ÔN TẬP TỔNG HỢP</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICS OVERVIEW -->
+    <section class="py-10 bg-amber-50/60 border-b border-amber-200/60">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-sm">
+                    <div class="text-3xl font-black text-crimson-800">4 BÀI</div>
+                    <div class="text-xs font-bold text-slate-600 uppercase mt-1">Bài 6 - 7 - 8 - 9</div>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-sm">
+                    <div class="text-3xl font-black text-amber-gold-600">1945 - Nay</div>
+                    <div class="text-xs font-bold text-slate-600 uppercase mt-1">Tiến trình lịch sử</div>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-sm">
+                    <div class="text-3xl font-black text-emerald-600">100%</div>
+                    <div class="text-xs font-bold text-slate-600 uppercase mt-1">Chuẩn SGK Mới</div>
+                </div>
+                <div class="bg-white p-4 rounded-2xl border border-amber-200 shadow-sm">
+                    <div class="text-3xl font-black text-blue-600">Tương tác</div>
+                    <div class="text-xs font-bold text-slate-600 uppercase mt-1">Bản đồ & Trắc nghiệm</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN LESSON CARDS (BÀI 6, BÀI 7, BÀI 8, BÀI 9) -->
+    <main id="danh-sach-bai" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-12">
+        <div class="border-b-2 border-crimson-700 pb-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-crimson-800 flex items-center gap-3">
+                    <span class="bg-crimson-800 text-white rounded-lg px-3 py-1 text-lg">CHỦ ĐỀ 3</span>
+                    DANH SÁCH BÀI HỌC
+                </h2>
+                <p class="text-slate-600 text-sm mt-1">Nhấp chọn bài học tương ứng để vào trang chi tiết kiến thức, bản đồ và câu hỏi luyện tập</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- BÀI 6 -->
+            <div class="bg-white rounded-2xl border-2 border-slate-200 shadow-sm hover:shadow-md hover:border-crimson-500 transition flex flex-col justify-between overflow-hidden group">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 bg-crimson-100 text-crimson-800 font-extrabold text-xs rounded-full uppercase tracking-wider">
+                            BÀI 6
+                        </span>
+                        <span class="text-xs font-semibold text-slate-500">Tháng 8/1945</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-crimson-800 transition">
+                        Cách mạng tháng Tám năm 1945
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Bối cảnh lịch sử, Thời cơ ngàn năm có một, Diễn biến Tổng khởi nghĩa (Hà Nội, Huế, Sài Gòn), Tuyên ngôn Độc lập 2/9, Nguyên nhân thắng lợi và Ý nghĩa lịch sử.
+                    </p>
+                    <div class="space-y-1.5 text-xs text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <span class="text-emerald-600 font-bold">✓</span>
+                            <span>Sơ đồ thời cơ lịch sử "Khung giờ vàng"</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-emerald-600 font-bold">✓</span>
+                            <span>Bản đồ sự kiện tương tác Tân Trào - Hà Nội - Huế - Sài Gòn</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="text-xs text-slate-500 font-mono">Tệp: <strong>bai-6.html</strong></span>
+                    <a href="bai-6.html" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-crimson-800 hover:bg-crimson-900 text-white font-bold text-xs rounded-xl shadow transition">
+                        <span>HỌC BÀI 6</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- BÀI 7 -->
+            <div class="bg-white rounded-2xl border-2 border-slate-200 shadow-sm hover:shadow-md hover:border-amber-500 transition flex flex-col justify-between overflow-hidden group">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 bg-amber-gold-500/20 text-amber-gold-600 font-extrabold text-xs rounded-full uppercase tracking-wider border border-amber-gold-500/30">
+                            BÀI 7
+                        </span>
+                        <span class="text-xs font-semibold text-slate-500">1945 – 1954</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-amber-gold-600 transition">
+                        Cuộc kháng chiến chống thực dân Pháp
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Lời kêu gọi Toàn quốc kháng chiến, Đường lối "Toàn dân, toàn diện, trường kỳ, tự lực cánh sinh", Chiến dịch Việt Bắc 1947, Biên giới 1950, Đông Xuân 1953-1954 & Chiến dịch Điện Biên Phủ.
+                    </p>
+                    <div class="space-y-1.5 text-xs text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <span class="text-emerald-600 font-bold">✓</span>
+                            <span>Phân tích Đường lối kháng chiến chống Pháp</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-emerald-600 font-bold">✓</span>
+                            <span>Diễn biến Chiến dịch Điện Biên Phủ & Hiệp định Giơ-ne-vơ 1954</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="text-xs text-slate-500 font-mono">Tệp: <strong>bai-7.html</strong></span>
+                    <a href="bai-7.html" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-amber-gold-500 hover:bg-amber-gold-600 text-slate-950 font-bold text-xs rounded-xl shadow transition">
+                        <span>HỌC BÀI 7</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- BÀI 8 -->
+            <div class="bg-white rounded-2xl border-2 border-slate-200 shadow-sm hover:shadow-md hover:border-blue-500 transition flex flex-col justify-between overflow-hidden group">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 font-extrabold text-xs rounded-full uppercase tracking-wider">
+                            BÀI 8
+                        </span>
+                        <span class="text-xs font-semibold text-slate-500">1954 – 1975</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition">
+                        Cuộc kháng chiến chống Mỹ, cứu nước
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        4 chiến lược chiến tranh của Mỹ (Đơn phương, Đặc biệt, Cục bộ, Việt Nam hóa), Phong trào Đồng khởi, Tổng tiến công Mậu Thân 1968, Điện Biên Phủ trên không 1972 & Đại thắng mùa Xuân 1975.
+                    </p>
+                    <div class="space-y-1.5 text-xs text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <span class="text-emerald-600 font-bold">✓</span>
+                            <span>Bảng so sánh 4 chiến lược chiến tranh của Mỹ</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-emerald-600 font-bold">✓</span>
+                            <span>Hiệp định Pa-ri 1973 & Chiến dịch Hồ Chí Minh lịch sử</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="text-xs text-slate-500 font-mono">Tệp: <strong>bai-8.html</strong></span>
+                    <a href="bai-8.html" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs rounded-xl shadow transition">
+                        <span>HỌC BÀI 8</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- BÀI 9 -->
+            <div class="bg-white rounded-2xl border-2 border-slate-200 shadow-sm hover:shadow-md hover:border-emerald-500 transition flex flex-col justify-between overflow-hidden group">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-3 py-1 bg-emerald-100 text-emerald-800 font-extrabold text-xs rounded-full uppercase tracking-wider">
+                            BÀI 9
+                        </span>
+                        <span class="text-xs font-semibold text-slate-500">1975 – Nay</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-emerald-700 transition">
+                        Đấu tranh bảo vệ Tổ quốc từ sau 1975 đến nay
+                    </h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Cuộc chiến đấu bảo vệ biên giới Tây Nam, chiến đấu bảo vệ biên giới phía Bắc, bảo vệ chủ quyền biển đảo (Hoàng Sa, Trường Sa) và Bài học lịch sử về quốc phòng toàn dân.
+                    </p>
+                    <div class="space-y-1.5 text-xs text-slate-600">
+                        <div class="flex items-center gap-2">
+                            <span class="text-emerald-600 font-bold">✓</span>
+                            <span>Diễn biến bảo vệ biên giới Tây Nam & Phía Bắc</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-emerald-600 font-bold">✓</span>
+                            <span>Tư liệu lịch sử về chủ quyền Hoàng Sa & Trường Sa</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-4 border-t border-slate-100 flex items-center justify-between">
+                    <span class="text-xs text-slate-500 font-mono">Tệp: <strong>bai-9.html</strong></span>
+                    <a href="bai-9.html" class="inline-flex items-center space-x-1.5 px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-xl shadow transition">
+                        <span>HỌC BÀI 9</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- TRỤC THỜI GIAN TỔNG HỢP (TIMELINE 1945 - NAY) -->
+    <section id="truc-thoi-gian" class="py-16 bg-slate-900 text-white scroll-mt-20 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="border-b border-slate-800 pb-4 mb-10 text-center">
+                <span class="px-3 py-1 bg-amber-gold-500/20 text-amber-gold-400 font-bold text-xs uppercase rounded-full border border-amber-gold-500/30">
+                    TỔNG HỢP CHỦ ĐỀ 3
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-black text-white mt-2">TRỤC THỜI GIAN CÁC MỐC LỊCH SỬ CHÍNH</h2>
+                <p class="text-slate-400 text-sm mt-1">Giai đoạn từ tháng 8-1945 đến nay</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <!-- Mốc 1: 1945 -->
+                <div class="bg-slate-800 p-5 rounded-2xl border-t-4 border-crimson-600 space-y-2">
+                    <span class="text-amber-gold-400 font-black text-xl block">1945</span>
+                    <h3 class="font-bold text-white text-sm">Cách mạng tháng Tám</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Thắng lợi Tổng khởi nghĩa tháng 8, khai sinh ra nước Việt Nam Dân chủ Cộng hòa ngày 2/9/1945.
+                    </p>
+                </div>
+
+                <!-- Mốc 2: 1954 -->
+                <div class="bg-slate-800 p-5 rounded-2xl border-t-4 border-amber-gold-500 space-y-2">
+                    <span class="text-amber-gold-400 font-black text-xl block">1954</span>
+                    <h3 class="font-bold text-white text-sm">Điện Biên Phủ & Hiệp định Giơ-ne-vơ</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Đánh bại thực dân Pháp, giải phóng hoàn toàn Miền Bắc, mở ra thời kỳ xây dựng XHCN ở Miền Bắc.
+                    </p>
+                </div>
+
+                <!-- Mốc 3: 1975 -->
+                <div class="bg-slate-800 p-5 rounded-2xl border-t-4 border-blue-500 space-y-2">
+                    <span class="text-amber-gold-400 font-black text-xl block">1975</span>
+                    <h3 class="font-bold text-white text-sm">Đại thắng Mùa Xuân 1975</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Thắng lợi Chiến dịch Hồ Chí Minh, giải phóng hoàn toàn Miền Nam, thống nhất đất nước.
+                    </p>
+                </div>
+
+                <!-- Mốc 4: 1975 - Nay -->
+                <div class="bg-slate-800 p-5 rounded-2xl border-t-4 border-emerald-500 space-y-2">
+                    <span class="text-amber-gold-400 font-black text-xl block">1975 - Nay</span>
+                    <h3 class="font-bold text-white text-sm">Bảo vệ Tổ quốc & Chủ quyền</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Bảo vệ biên giới Tây Nam, biên giới phía Bắc và kiên quyết bảo vệ chủ quyền biển đảo Hoàng Sa, Trường Sa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRẮC NGHIỆM TỔNG HỢP -->
+    <section id="trac-nghiem-tong-hop" class="py-16 bg-white scroll-mt-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <div class="border-b-2 border-crimson-700 pb-3 mb-8 text-center sm:text-left">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-crimson-800 flex items-center justify-center sm:justify-start gap-3">
+                    <span class="bg-crimson-800 text-white rounded-lg px-3 py-1 text-lg">📝</span>
+                    LUYỆN TẬP TRẮC NGHIỆM TỔNG HỢP CHỦ ĐỀ 3
+                </h2>
+                <p class="text-slate-600 text-sm mt-1">Kiểm tra kiến thức bao quát cả 4 bài học (Bài 6, Bài 7, Bài 8, Bài 9)</p>
+            </div>
+
+            <div id="general-quiz-container" class="space-y-6">
+                <!-- Rendered dynamically -->
+            </div>
+
+            <div class="mt-8 text-center">
+                <button onclick="submitGeneralQuiz()" class="px-8 py-3.5 bg-crimson-800 hover:bg-crimson-900 text-white font-extrabold text-sm rounded-xl shadow-lg transition transform active:scale-95">
+                    NỘP BÀI TỔNG HỢP
+                </button>
+            </div>
+
+            <div id="general-quiz-result" class="hidden mt-6 p-6 bg-amber-50 border-2 border-amber-400 rounded-2xl text-center">
+                <h3 class="text-xl font-black text-slate-900 mb-2">KẾT QUẢ ĐÁNH GIÁ</h3>
+                <div id="general-quiz-score" class="text-3xl font-black text-crimson-800 mb-2"></div>
+                <p id="general-quiz-feedback" class="text-sm text-slate-700"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 text-xs py-8 border-t border-slate-900 text-center space-y-2">
+        <p class="font-bold text-slate-200">TRANG CHỦ TỔNG HỢP CHỦ ĐỀ 3 – LỊCH SỬ 12 (KẾT NỐI TRI THỨC VỚI CUỘC SỐNG)</p>
+        <p>© Tối ưu giao diện trên mọi thiết bị máy tính, máy tính bảng và điện thoại di động.</p>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Quiz Data across Lessons 6-9
+        const generalQuestions = [
+            {
+                q: "1. (Bài 6) Ngày 15-8-1945 diễn ra sự kiện quan trọng nào tạo cơ hội thuận lợi cho Việt Nam khởi nghĩa?",
+                options: [
+                    "A. Mỹ ném bom nguyên tử xuống Nhật Bản",
+                    "B. Nhật Bản tuyên bố đầu hàng Đồng minh không điều kiện",
+                    "C. Quân Anh tiến vào miền Nam Việt Nam",
+                    "D. Vua Bảo Đại tuyên bố thoái vị"
+                ],
+                correct: 1
+            },
+            {
+                q: "2. (Bài 7) Chiến dịch lịch sử nào đã kết thúc thắng lợi cuộc kháng chiến chống thực dân Pháp (1945-1954)?",
+                options: [
+                    "A. Chiến dịch Việt Bắc thu - đông 1947",
+                    "B. Chiến dịch Biên giới thu - đông 1950",
+                    "C. Chiến dịch Điện Biên Phủ năm 1954",
+                    "D. Cuộc tiến công chiến lược Đông Xuân 1953 - 1954"
+                ],
+                correct: 2
+            },
+            {
+                q: "3. (Bài 8) Chiến dịch giải phóng hoàn toàn Miền Nam, thống nhất đất nước năm 1975 mang tên:",
+                options: [
+                    "A. Chiến dịch Tây Nguyên",
+                    "B. Chiến dịch Huế - Đà Nẵng",
+                    "C. Chiến dịch Hồ Chí Minh",
+                    "D. Chiến dịch Đường 9 - Nam Lào"
+                ],
+                correct: 2
+            },
+            {
+                q: "4. (Bài 9) Hai quần đảo nào thuộc chủ quyền Việt Nam trên Biển Đông được khẳng định trong nội dung bảo vệ chủ quyền biển đảo?",
+                options: [
+                    "A. Hoàng Sa và Trường Sa",
+                    "B. Côn Đảo và Phú Quốc",
+                    "C. Lý Sơn và Cát Bà",
+                    "D. Thổ Chu và Cù Lao Cham"
+                ],
+                correct: 0
+            }
+        ];
+
+        function renderGeneralQuiz() {
+            const container = document.getElementById('general-quiz-container');
+            container.innerHTML = generalQuestions.map((q, idx) => `
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-slate-900 text-sm mb-3">${q.q}</h4>
+                    <div class="space-y-2">
+                        ${q.options.map((opt, oIdx) => `
+                            <label class="flex items-center p-3 bg-white rounded-xl border border-slate-200 hover:bg-slate-100 cursor-pointer text-xs transition">
+                                <input type="radio" name="gq_${idx}" value="${oIdx}" class="w-4 h-4 text-crimson-800 border-slate-300">
+                                <span class="ml-2.5 text-slate-700">${opt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function submitGeneralQuiz() {
+            let score = 0;
+            generalQuestions.forEach((q, idx) => {
+                const selected = document.querySelector(`input[name="gq_${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === q.correct) {
+                    score++;
+                }
+            });
+
+            const resultBox = document.getElementById('general-quiz-result');
+            const scoreBox = document.getElementById('general-quiz-score');
+            const feedbackBox = document.getElementById('general-quiz-feedback');
+
+            scoreBox.innerText = `${score} / ${generalQuestions.length} ĐIỂM`;
+            if (score === generalQuestions.length) {
+                feedbackBox.innerText = "Xuất sắc! Bạn nắm rất vững kiến thức bao quát Chủ đề 3!";
+            } else {
+                feedbackBox.innerText = "Kết quả khá tốt! Bạn có thể vào chi tiết từng Bài 6, 7, 8, 9 để ôn tập kĩ hơn.";
+            }
+            resultBox.classList.remove('hidden');
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onload = function() {
+            renderGeneralQuiz();
+        };
+    </script>
+</body>
+</html>
