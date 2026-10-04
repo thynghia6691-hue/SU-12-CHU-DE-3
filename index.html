@@ -50,6 +50,39 @@
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased font-sans leading-relaxed selection:bg-crimson-100 selection:text-crimson-800">
 
+    <!-- MODAL NHẬP THÔNG TIN HỌC SINH -->
+    <div id="student-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/80 backdrop-blur-md p-4 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl shadow-2xl border border-slate-100 max-w-md w-full p-6 sm:p-8 transform transition-all">
+            <div class="text-center mb-6">
+                <span class="inline-flex items-center justify-center h-14 w-14 rounded-full bg-crimson-100 text-crimson-800 font-black text-xl mb-3 shadow-inner">
+                    📖
+                </span>
+                <h2 class="text-2xl font-black text-slate-900 tracking-tight">CỔNG HỌC TẬP LỊCH SỬ 12</h2>
+                <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider mt-1">Chủ đề 3: Cách mạng tháng Tám & Bảo vệ Tổ quốc</p>
+            </div>
+
+            <form id="student-form" onsubmit="saveStudentInfo(event)" class="space-y-4">
+                <div>
+                    <label for="student-name" class="block text-xs font-bold text-slate-700 uppercase mb-1">Họ và tên học sinh <span class="text-crimson-600">*</span></label>
+                    <input type="text" id="student-name" required placeholder="Ví dụ: Nguyễn Văn An" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-crimson-600 focus:border-crimson-600 outline-none transition">
+                </div>
+
+                <div>
+                    <label for="student-class" class="block text-xs font-bold text-slate-700 uppercase mb-1">Lớp học <span class="text-crimson-600">*</span></label>
+                    <input type="text" id="student-class" required placeholder="Ví dụ: 12A1" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-crimson-600 focus:border-crimson-600 outline-none transition">
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-crimson-800 hover:bg-crimson-900 text-white font-extrabold text-sm rounded-xl shadow-lg hover:shadow-xl transition transform active:scale-95 flex items-center justify-center gap-2">
+                    <span>XÁC NHẬN & VÀO HỌC</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </button>
+            </form>
+            <p class="text-[11px] text-center text-slate-400 mt-4">Vui lòng nhập chính xác Họ tên và Lớp để bắt đầu tham gia bài học.</p>
+        </div>
+    </div>
+
     <!-- HEADER & NAVIGATION -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,12 +97,23 @@
                     </div>
                 </div>
 
-                <!-- Desktop Menu -->
-                <nav class="hidden lg:flex items-center space-x-1 text-xs font-semibold uppercase tracking-wider text-slate-700">
-                    <a href="#danh-sach-bai" class="px-3 py-2 rounded-md hover:bg-slate-100 hover:text-crimson-800 transition">4 Bài học</a>
-                    <a href="#truc-thoi-gian" class="px-3 py-2 rounded-md hover:bg-slate-100 hover:text-crimson-800 transition">Trục thời gian</a>
-                    <a href="#trac-nghiem-tong-hop" class="px-3 py-2 rounded-md hover:bg-slate-100 hover:text-crimson-800 transition">Luyện tập chung</a>
-                </nav>
+                <!-- Desktop Menu & User Info -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <nav class="flex items-center space-x-1 text-xs font-semibold uppercase tracking-wider text-slate-700">
+                        <a href="#danh-sach-bai" class="px-3 py-2 rounded-md hover:bg-slate-100 hover:text-crimson-800 transition">4 Bài học</a>
+                        <a href="#truc-thoi-gian" class="px-3 py-2 rounded-md hover:bg-slate-100 hover:text-crimson-800 transition">Trục thời gian</a>
+                        <a href="#trac-nghiem-tong-hop" class="px-3 py-2 rounded-md hover:bg-slate-100 hover:text-crimson-800 transition">Luyện tập chung</a>
+                    </nav>
+
+                    <!-- User Tag -->
+                    <div id="user-info-display" class="hidden items-center bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700">
+                        <span class="text-crimson-800 font-bold mr-1">👤</span>
+                        <span id="user-name-text" class="font-bold text-slate-900"></span>
+                        <span class="mx-1.5 text-slate-400">|</span>
+                        <span id="user-class-text" class="text-slate-600"></span>
+                        <button onclick="reEditStudentInfo()" class="ml-2 text-[10px] text-crimson-700 underline font-semibold hover:text-crimson-900">Đổi</button>
+                    </div>
+                </div>
 
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100">
@@ -81,7 +125,11 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-1 text-sm font-medium">
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2 text-sm font-medium">
+            <div id="mobile-user-info" class="hidden p-2.5 bg-amber-50 border border-amber-200 rounded-xl text-xs font-semibold text-slate-800 flex items-center justify-between">
+                <span>👤 <span id="mobile-user-name"></span> - <span id="mobile-user-class"></span></span>
+                <button onclick="reEditStudentInfo()" class="text-crimson-700 underline font-bold">Đổi</button>
+            </div>
             <a href="#danh-sach-bai" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md hover:bg-slate-100">Danh sách 4 Bài học</a>
             <a href="#truc-thoi-gian" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md hover:bg-slate-100">Trục thời gian 1945 - Nay</a>
             <a href="#trac-nghiem-tong-hop" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md hover:bg-slate-100">Luyện tập trắc nghiệm chung</a>
@@ -400,6 +448,54 @@
             menu.classList.toggle('hidden');
         }
 
+        // --- BỔ SUNG: XỬ LÝ HỌ VÀ TÊN & LỚP HỌC SINH ---
+        function checkStudentInfo() {
+            const savedName = localStorage.getItem('ls12_student_name');
+            const savedClass = localStorage.getItem('ls12_student_class');
+
+            const modal = document.getElementById('student-modal');
+            const userInfoDisplay = document.getElementById('user-info-display');
+            const mobileUserInfo = document.getElementById('mobile-user-info');
+
+            if (savedName && savedClass) {
+                // Ẩn modal nếu đã điền thông tin
+                modal.classList.add('hidden');
+
+                // Hiển thị ở Header Desktop
+                document.getElementById('user-name-text').innerText = savedName;
+                document.getElementById('user-class-text').innerText = savedClass;
+                userInfoDisplay.classList.remove('hidden');
+                userInfoDisplay.classList.add('flex');
+
+                // Hiển thị ở Header Mobile
+                document.getElementById('mobile-user-name').innerText = savedName;
+                document.getElementById('mobile-user-class').innerText = savedClass;
+                mobileUserInfo.classList.remove('hidden');
+            } else {
+                // Hiển thị modal bắt buộc nhập
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function saveStudentInfo(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('student-name').value.trim();
+            const classInput = document.getElementById('student-class').value.trim();
+
+            if (nameInput && classInput) {
+                localStorage.setItem('ls12_student_name', nameInput);
+                localStorage.setItem('ls12_student_class', classInput);
+                checkStudentInfo();
+            }
+        }
+
+        function reEditStudentInfo() {
+            const modal = document.getElementById('student-modal');
+            document.getElementById('student-name').value = localStorage.getItem('ls12_student_name') || '';
+            document.getElementById('student-class').value = localStorage.getItem('ls12_student_class') || '';
+            modal.classList.remove('hidden');
+        }
+
         // Quiz Data across Lessons 6-9
         const generalQuestions = [
             {
@@ -474,17 +570,21 @@
             const scoreBox = document.getElementById('general-quiz-score');
             const feedbackBox = document.getElementById('general-quiz-feedback');
 
+            const studentName = localStorage.getItem('ls12_student_name') || 'Học sinh';
+            const studentClass = localStorage.getItem('ls12_student_class') || '';
+
             scoreBox.innerText = `${score} / ${generalQuestions.length} ĐIỂM`;
             if (score === generalQuestions.length) {
-                feedbackBox.innerText = "Xuất sắc! Bạn nắm rất vững kiến thức bao quát Chủ đề 3!";
+                feedbackBox.innerText = `Chúc mừng ${studentName} (${studentClass})! Bạn đã hoàn thành xuất sắc bài luyện tập的主題 3!`;
             } else {
-                feedbackBox.innerText = "Kết quả khá tốt! Bạn có thể vào chi tiết từng Bài 6, 7, 8, 9 để ôn tập kĩ hơn.";
+                feedbackBox.innerText = `Kết quả của ${studentName} (${studentClass}) khá tốt! Hãy xem lại kiến thức các bài để đạt điểm tối đa nhé.`;
             }
             resultBox.classList.remove('hidden');
             resultBox.scrollIntoView({ behavior: 'smooth' });
         }
 
         window.onload = function() {
+            checkStudentInfo();
             renderGeneralQuiz();
         };
     </script>
